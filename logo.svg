@@ -1,93 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
   <defs>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#F2D870"/>
-      <stop offset="45%"  stop-color="#C9A84C"/>
-      <stop offset="100%" stop-color="#8B6018"/>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F5E080"/>
+      <stop offset="50%"  stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#9A7020"/>
     </linearGradient>
-    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%"   stop-color="#F2D870"/>
-      <stop offset="100%" stop-color="#9A7530"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
   <!-- Background -->
-  <rect width="600" height="600" fill="#08080f"/>
+  <rect width="500" height="500" fill="#09090f"/>
 
-  <!-- Outer ring -->
-  <circle cx="300" cy="270" r="210" fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.35"/>
-  <circle cx="300" cy="270" r="196" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.15"/>
+  <!-- Subtle outer ring -->
+  <circle cx="250" cy="235" r="195" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
 
-  <!-- Corner tick marks on ring -->
-  <line x1="300" y1="61"  x2="300" y2="74"  stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
-  <line x1="300" y1="466" x2="300" y2="479" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
-  <line x1="91"  y1="270" x2="104" y2="270" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
-  <line x1="496" y1="270" x2="509" y2="270" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
-
-  <!-- Crown base bar -->
-  <rect x="195" y="248" width="210" height="18" rx="2" fill="url(#goldV)"/>
-
-  <!-- Crown — 5 peaks -->
+  <!-- Crown — 3 clean peaks -->
   <polygon
-    points="197,248  222,178  252,228  300,148  348,228  378,178  403,248"
-    fill="url(#goldV)"
-    filter="url(#glow)"
+    points="
+      148,295
+      148,268
+      188,192
+      220,262
+      250,162
+      280,262
+      312,192
+      352,268
+      352,295
+    "
+    fill="url(#g)"
+    filter="url(#soft)"
   />
 
-  <!-- Crown jewels -->
-  <circle cx="300" cy="161" r="9"   fill="#F8ECA0" opacity="0.95"/>
-  <circle cx="240" cy="207" r="5.5" fill="#F8ECA0" opacity="0.80"/>
-  <circle cx="360" cy="207" r="5.5" fill="#F8ECA0" opacity="0.80"/>
-  <circle cx="222" cy="190" r="3"   fill="#F8ECA0" opacity="0.55"/>
-  <circle cx="378" cy="190" r="3"   fill="#F8ECA0" opacity="0.55"/>
+  <!-- Crown base bottom edge (caps the crown) -->
+  <rect x="148" y="283" width="204" height="14" rx="2" fill="url(#g)"/>
 
-  <!-- AU monogram -->
+  <!-- Jewel dots on peak tips -->
+  <circle cx="250" cy="164" r="8.5" fill="#FDF0A0" opacity="0.95"/>
+  <circle cx="189" cy="194" r="5.5" fill="#FDF0A0" opacity="0.85"/>
+  <circle cx="311" cy="194" r="5.5" fill="#FDF0A0" opacity="0.85"/>
+
+  <!-- Thin separator line -->
+  <line x1="195" y1="322" x2="305" y2="322" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- AU -->
   <text
-    x="300" y="340"
+    x="250" y="400"
     text-anchor="middle"
-    font-family="'Georgia', 'Palatino', serif"
-    font-size="68"
+    font-family="Georgia, 'Palatino Linotype', serif"
+    font-size="88"
     font-weight="400"
-    fill="url(#gold)"
-    letter-spacing="10"
-    filter="url(#glow)"
+    fill="url(#g)"
+    letter-spacing="12"
+    filter="url(#soft)"
   >AU</text>
 
-  <!-- Divider line with dots -->
-  <line x1="215" y1="358" x2="385" y2="358" stroke="url(#gold)" stroke-width="0.8" opacity="0.45"/>
-  <circle cx="300" cy="358" r="2.5" fill="#C9A84C" opacity="0.7"/>
-  <circle cx="270" cy="358" r="1.5" fill="#C9A84C" opacity="0.4"/>
-  <circle cx="330" cy="358" r="1.5" fill="#C9A84C" opacity="0.4"/>
-
-  <!-- Element number 79 -->
-  <text x="300" y="386" text-anchor="middle"
-    font-family="'Arial', sans-serif" font-size="11" font-weight="300"
-    fill="#C9A84C" opacity="0.45" letter-spacing="3">79 · GOLD</text>
-
-  <!-- AUREY wordmark -->
-  <text
-    x="300" y="532"
-    text-anchor="middle"
-    font-family="'Arial', 'Helvetica Neue', sans-serif"
-    font-size="36"
-    font-weight="200"
-    fill="url(#gold)"
-    letter-spacing="18"
-  >AUREY</text>
-
-  <!-- Tagline -->
-  <text
-    x="300" y="558"
-    text-anchor="middle"
-    font-family="'Arial', sans-serif"
-    font-size="10"
-    font-weight="400"
-    fill="#C9A84C"
-    opacity="0.4"
-    letter-spacing="5"
-  >FINANCE AI AUTOMATION</text>
 </svg>
