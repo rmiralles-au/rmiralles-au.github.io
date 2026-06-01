@@ -3,7 +3,7 @@
 :root {
   --gold:      #C9A84C;
   --gold-lite: #E8C97A;
-  --bg:        #080810;
+  --bg:        #060612;
   --border:    rgba(255,255,255,0.07);
   --text:      #f0ece6;
   --soft:      #c2bdb6;
@@ -18,8 +18,8 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px);
-  background-size: 30px 30px;
+    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
   color: var(--text);
   font-family: var(--font-b);
   line-height: 1.6;
@@ -107,7 +107,7 @@ nav {
   position: fixed; top: 0; width: 100%;
   padding: 1.4rem 6%;
   display: flex; justify-content: space-between; align-items: center;
-  background: rgba(8,8,16,0.75);
+  background: rgba(6,6,18,0.8);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);

@@ -1,164 +1,258 @@
-// ── CURSOR GLOW ──
-const cursorGlow = document.getElementById('cursor-glow');
-let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
-let tx = cx, ty = cy;
+// ══════════════════════════════════════════════
+//  FLOW FIELD — particles follow force lines
+//  Mouse repels · Click = shockwave explosion
+// ══════════════════════════════════════════════
 
-document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
-
-(function moveCursor() {
-  cx += (tx - cx) * 0.1;
-  cy += (ty - cy) * 0.1;
-  cursorGlow.style.left = cx + 'px';
-  cursorGlow.style.top  = cy + 'px';
-  requestAnimationFrame(moveCursor);
-})();
-
-
-// ── PARTICLE NETWORK ──
 const canvas = document.getElementById('particles');
 const ctx    = canvas.getContext('2d');
-let particles = [];
-let mx = null, my = null;
+
+let W, H, particles = [], shockwaves = [];
+let mx = -9999, my = -9999;
+let time = 0;
 
 function resize() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
 }
 resize();
-window.addEventListener('resize', () => { resize(); buildParticles(); });
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-document.addEventListener('mouseleave', () => { mx = null; my = null; });
+window.addEventListener('resize', () => { resize(); init(); });
+window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+window.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+window.addEventListener('click', e => {
+  shockwaves.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.7 });
+});
 
-class Dot {
+// ── FLOW ANGLE at (x,y,t) ──
+function flow(x, y, t) {
+  const s = 0.0022;
+  return (
+    Math.sin(x * s + t * 0.55) * Math.cos(y * s * 0.9 + t * 0.35) +
+    Math.cos(x * s * 0.7 - t * 0.45) * Math.sin(y * s * 1.1 + t * 0.6)
+  ) * Math.PI;
+}
+
+// ── PARTICLE CLASS ──
+class Particle {
   constructor(rand) {
-    if (rand) {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-    } else {
-      this.x = Math.random() > 0.5 ? 0 : canvas.width;
-      this.y = Math.random() * canvas.height;
-    }
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.r  = Math.random() * 1.4 + 0.5;
-    this.a  = Math.random() * 0.5 + 0.2;
+    this.trail = [];
+    this.reset(rand);
   }
 
-  update() {
-    if (mx !== null) {
-      const dx = mx - this.x, dy = my - this.y;
-      const d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < 110) { this.x -= (dx / d) * 0.7; this.y -= (dy / d) * 0.7; }
+  reset(rand) {
+    this.x     = rand ? Math.random() * W : (Math.random() > 0.5 ? 0 : W);
+    this.y     = rand ? Math.random() * H : Math.random() * H;
+    this.vx    = 0;
+    this.vy    = 0;
+    this.speed = Math.random() * 0.7 + 0.25;
+    this.size  = Math.random() * 1.3 + 0.4;
+    this.alpha = Math.random() * 0.55 + 0.25;
+    this.life  = Math.random() * 400 + 200;
+    this.maxL  = this.life;
+    this.trail = [];
+  }
+
+  update(t) {
+    const angle = flow(this.x, this.y, t);
+    const tx = Math.cos(angle) * this.speed;
+    const ty = Math.sin(angle) * this.speed;
+    this.vx += (tx - this.vx) * 0.06;
+    this.vy += (ty - this.vy) * 0.06;
+
+    // Mouse repulsion
+    const dx = this.x - mx, dy = this.y - my;
+    const d  = Math.sqrt(dx * dx + dy * dy);
+    if (d < 130 && d > 0.1) {
+      const f = (1 - d / 130) * 2.2;
+      this.vx += (dx / d) * f;
+      this.vy += (dy / d) * f;
     }
+
+    // Shockwave push
+    for (const sw of shockwaves) {
+      const sx = this.x - sw.x, sy = this.y - sw.y;
+      const sd = Math.sqrt(sx * sx + sy * sy);
+      const ring = Math.abs(sd - sw.r);
+      if (ring < 35 && sd > 0.1) {
+        const push = (1 - ring / 35) * 6 * sw.alpha;
+        this.vx += (sx / sd) * push;
+        this.vy += (sy / sd) * push;
+      }
+    }
+
+    // Store trail
+    this.trail.push({ x: this.x, y: this.y });
+    if (this.trail.length > 14) this.trail.shift();
+
     this.x += this.vx;
     this.y += this.vy;
-    if (this.x < -20 || this.x > canvas.width + 20 ||
-        this.y < -20 || this.y > canvas.height + 20) {
-      Object.assign(this, new Dot(false));
+    this.life--;
+
+    if (this.life <= 0 || this.x < -40 || this.x > W + 40 || this.y < -40 || this.y > H + 40) {
+      this.reset(false);
     }
   }
 
   draw() {
+    const ageFade = this.life < 80 ? this.life / 80 : 1;
+    const n = this.trail.length;
+
+    // Draw trail
+    for (let i = 1; i < n; i++) {
+      const p = i / n;
+      ctx.beginPath();
+      ctx.moveTo(this.trail[i - 1].x, this.trail[i - 1].y);
+      ctx.lineTo(this.trail[i].x, this.trail[i].y);
+      ctx.strokeStyle = `rgba(201,168,76,${p * this.alpha * 0.5 * ageFade})`;
+      ctx.lineWidth   = this.size * p;
+      ctx.stroke();
+    }
+
+    // Draw head
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(201,168,76,${this.a})`;
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(220,185,90,${this.alpha * ageFade})`;
     ctx.fill();
   }
 }
 
-function buildParticles() {
-  const n = Math.min(Math.floor((canvas.width * canvas.height) / 9000), 140);
-  particles = Array.from({ length: n }, () => new Dot(true));
-}
-
-function connect() {
-  const MAX = 145;
+// ── CONNECTIONS ──
+function drawConnections() {
+  const MAX = 85;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
-      const d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < MAX) {
+      const d2 = dx * dx + dy * dy;
+      if (d2 < MAX * MAX) {
+        const d = Math.sqrt(d2);
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(201,168,76,${(1 - d / MAX) * 0.22})`;
-        ctx.lineWidth   = 0.6;
+        ctx.strokeStyle = `rgba(201,168,76,${(1 - d / MAX) * 0.14})`;
+        ctx.lineWidth   = 0.5;
         ctx.stroke();
       }
     }
   }
 }
 
-buildParticles();
+// ── INIT ──
+function init() {
+  const n = Math.min(Math.floor(W * H / 7500), 200);
+  particles = Array.from({ length: n }, () => new Particle(true));
+}
 
+// ── LOOP ──
 (function tick() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  connect();
+  ctx.clearRect(0, 0, W, H);
+  time += 0.007;
+
+  particles.forEach(p => { p.update(time); p.draw(); });
+  drawConnections();
+
+  // Shockwave rings
+  shockwaves = shockwaves.filter(sw => sw.alpha > 0.015);
+  shockwaves.forEach(sw => {
+    sw.r     += 7;
+    sw.alpha *= 0.93;
+    ctx.beginPath();
+    ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(201,168,76,${sw.alpha * 0.5})`;
+    ctx.lineWidth   = 1.5;
+    ctx.stroke();
+    // Inner ring
+    if (sw.r > 20) {
+      ctx.beginPath();
+      ctx.arc(sw.x, sw.y, sw.r * 0.6, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(240,200,100,${sw.alpha * 0.25})`;
+      ctx.lineWidth   = 0.8;
+      ctx.stroke();
+    }
+  });
+
   requestAnimationFrame(tick);
 })();
 
+init();
 
-// ── SCROLL REVEAL ──
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+
+// ══════════════════════════════════════════════
+//  CURSOR GLOW (smooth follow)
+// ══════════════════════════════════════════════
+const glow = document.getElementById('cursor-glow');
+let gx = W / 2, gy = H / 2, gtx = gx, gty = gy;
+document.addEventListener('mousemove', e => { gtx = e.clientX; gty = e.clientY; });
+(function moveGlow() {
+  gx += (gtx - gx) * 0.09;
+  gy += (gty - gy) * 0.09;
+  glow.style.left = gx + 'px';
+  glow.style.top  = gy + 'px';
+  requestAnimationFrame(moveGlow);
+})();
+
+
+// ══════════════════════════════════════════════
+//  SCROLL REVEAL
+// ══════════════════════════════════════════════
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
 }, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-card').forEach(el => revObs.observe(el));
 
-document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el));
 
-
-// ── STAT COUNTER ──
-const statsEl   = document.querySelector('.hero-stats');
-let   counted   = false;
-
+// ══════════════════════════════════════════════
+//  STAT COUNTER
+// ══════════════════════════════════════════════
 const STATS = [
-  { el: null, target: 3,  prefix: '',  suffix: ''   },
-  { el: null, target: 35, prefix: '',  suffix: '+'  },
-  { el: null, target: 8,  prefix: '',  suffix: ''   },
-  { el: null, target: 5,  prefix: '$', suffix: 'M+' },
+  { selector: '.stat-num', targets: [3, 35, 8, 5], prefixes: ['','','','$'], suffixes: ['','+','','M+'] }
 ];
 
-document.querySelectorAll('.stat-num').forEach((el, i) => { STATS[i].el = el; });
+const statEls = [...document.querySelectorAll('.stat-num')];
+const statData = [
+  { target: 3,  pre: '',  suf: ''   },
+  { target: 35, pre: '',  suf: '+'  },
+  { target: 8,  pre: '',  suf: ''   },
+  { target: 5,  pre: '$', suf: 'M+' },
+];
+let counted = false;
 
-function countUp(s) {
-  const dur  = 1000;
+function countUp(el, target, pre, suf) {
   const start = performance.now();
+  const dur   = 1100;
   (function step(now) {
     const p = Math.min((now - start) / dur, 1);
     const e = 1 - Math.pow(1 - p, 3);
-    s.el.textContent = s.prefix + Math.floor(e * s.target) + s.suffix;
+    el.textContent = pre + Math.floor(e * target) + suf;
     if (p < 1) requestAnimationFrame(step);
-    else s.el.textContent = s.prefix + s.target + s.suffix;
+    else el.textContent = pre + target + suf;
   })(start);
 }
 
 new IntersectionObserver(entries => {
   if (entries[0].isIntersecting && !counted) {
     counted = true;
-    STATS.forEach((s, i) => setTimeout(() => countUp(s), i * 80));
+    statEls.forEach((el, i) => setTimeout(() => countUp(el, statData[i].target, statData[i].pre, statData[i].suf), i * 100));
   }
-}, { threshold: 0.5 }).observe(statsEl);
+}, { threshold: 0.5 }).observe(document.querySelector('.hero-stats'));
 
 
-// ── NAV ACTIVE STATE ──
-const secs = document.querySelectorAll('section[id]');
+// ══════════════════════════════════════════════
+//  NAV ACTIVE + CARD MOUSE GLOW
+// ══════════════════════════════════════════════
+const secs  = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.nav-links a');
-
 window.addEventListener('scroll', () => {
   let cur = '';
   secs.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
   links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
 }, { passive: true });
 
-
-// ── CARD MOUSE GLOW TRACKING ──
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x    = ((e.clientX - rect.left) / rect.width)  * 100;
-    const y    = ((e.clientY - rect.top)  / rect.height) * 100;
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width)  * 100;
+    const y = ((e.clientY - r.top)  / r.height) * 100;
     card.querySelector('.card-glow').style.background =
-      `radial-gradient(circle at ${x}% ${y}%, rgba(201,168,76,0.1) 0%, transparent 60%)`;
+      `radial-gradient(circle at ${x}% ${y}%, rgba(201,168,76,0.11) 0%, transparent 60%)`;
   });
 });
