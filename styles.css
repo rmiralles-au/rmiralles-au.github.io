@@ -16,10 +16,13 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg);
+  background-color: #07070f;
   background-image:
-    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
+    radial-gradient(ellipse 90% 55% at 15% 0%,   rgba(90,55,160,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 100%,  rgba(160,90,20,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%,   rgba(40,20,100,0.18) 0%, transparent 50%),
+    radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px);
+  background-size: auto, auto, auto, 28px 28px;
   color: var(--text);
   font-family: var(--font-b);
   line-height: 1.6;
@@ -40,18 +43,18 @@ body {
 .orb-1 {
   width: 750px; height: 750px;
   background: radial-gradient(circle, rgba(201,168,76,0.9) 0%, rgba(140,90,10,0.6) 35%, transparent 65%);
-  opacity: 0.13;
-  top: -320px; left: -280px;
-  filter: blur(110px);
+  opacity: 0.22;
+  top: -300px; left: -250px;
+  filter: blur(100px);
   animation: driftA 30s ease-in-out infinite;
 }
 
 .orb-2 {
   width: 650px; height: 650px;
   background: radial-gradient(circle, rgba(220,120,30,0.9) 0%, rgba(160,70,10,0.6) 35%, transparent 65%);
-  opacity: 0.11;
-  bottom: -280px; right: -220px;
-  filter: blur(110px);
+  opacity: 0.18;
+  bottom: -250px; right: -200px;
+  filter: blur(100px);
   animation: driftB 24s ease-in-out infinite;
   animation-delay: -10s;
 }
@@ -59,9 +62,9 @@ body {
 .orb-3 {
   width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(180,140,60,0.8) 0%, rgba(120,80,10,0.5) 35%, transparent 65%);
-  opacity: 0.09;
+  opacity: 0.14;
   top: 35%; right: 5%;
-  filter: blur(100px);
+  filter: blur(90px);
   animation: driftC 20s ease-in-out infinite;
   animation-delay: -6s;
 }
