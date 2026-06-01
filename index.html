@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reynel Miralles — Finance AI Builder</title>
-  <meta name="description" content="I build AI-powered finance automation tools for mid-size companies in Miami and Latin America." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Finance AI builder based in Miami. I build automation tools that eliminate manual finance workflows for mid-size companies." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <canvas id="particles"></canvas>
 
   <!-- NAV -->
   <nav>
@@ -22,24 +24,48 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-content">
-      <p class="label">Finance AI Automation · Miami & Latin America</p>
-      <h1>I turn days of manual finance work into minutes.</h1>
-      <p class="hero-sub">I build AI-powered tools for mid-size companies — automating the finance workflows that eat up your team's time every single month.</p>
+    <div class="hero-inner">
+      <p class="eyebrow">Finance AI · Miami, FL</p>
+      <h1>I build AI tools that <span class="gold">eliminate</span> manual finance work.</h1>
+      <p class="hero-sub">3 tools in production at a multi-subsidiary distributor operating across 8 countries. Over 35 hours saved every month. Built from scratch at 20.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Tools shipped</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">35+</span>
+          <span class="stat-label">Hours saved monthly</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Countries automated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">$5M+</span>
+          <span class="stat-label">Monthly transactions covered</span>
+        </div>
+      </div>
       <a href="#work" class="btn">See the work</a>
     </div>
   </section>
 
   <!-- WORK -->
-  <section id="work">
-    <p class="label">Case Studies</p>
-    <h2>Built. Shipped. In use.</h2>
+  <section id="work" class="reveal">
+    <p class="eyebrow">Case Studies</p>
+    <h2>Built. Shipped. Running in production.</h2>
     <div class="cards">
 
-      <div class="card">
-        <span class="tag">Accounts Payable</span>
+      <div class="card reveal-card">
+        <div class="card-header">
+          <span class="tag">Accounts Payable</span>
+          <span class="card-num">01</span>
+        </div>
         <h3>AP Statement Automation</h3>
-        <p>The AP team at a Miami-based multinational distributor received 5 Citibank credit card statements every month — nearly $200K in transactions. Processing them for SAP entry took a full day of manual work. Now she uploads the PDFs and gets a clean, SAP-ready Excel file in minutes.</p>
+        <p>The AP team at a Miami-based multinational distributor manually processed 5 Citibank credit card statements every month, nearly $200K in transactions, entering each line into SAP by hand. A full day of work every single month, every month.</p>
         <div class="metrics">
           <div class="metric">
             <span class="metric-num">~1 full day</span>
@@ -53,13 +79,16 @@
         <p class="stack">Python · Claude API · openpyxl</p>
       </div>
 
-      <div class="card">
-        <span class="tag">Sales Commissions</span>
+      <div class="card reveal-card">
+        <div class="card-header">
+          <span class="tag">Sales Commissions</span>
+          <span class="card-num">02</span>
+        </div>
         <h3>Commissions Automation</h3>
-        <p>The Regional Financial Controller processed 500+ SAP line items every month — manually applying tiered commission rules across 6 salespeople and building individual Excel reports by hand. Now she uploads the export and every rep's report is ready instantly.</p>
+        <p>The Regional Financial Controller processed 500+ SAP line items every month, manually applying tiered commission rules and building 6 individual Excel reports for the sales team. Hours of calculation work with zero margin for error.</p>
         <div class="metrics">
           <div class="metric">
-            <span class="metric-num">4–8 hours</span>
+            <span class="metric-num">4 to 8 hours</span>
             <span class="metric-label">reduced to under 2 minutes</span>
           </div>
           <div class="metric">
@@ -70,14 +99,17 @@
         <p class="stack">Python · Streamlit · pandas · openpyxl</p>
       </div>
 
-      <div class="card">
-        <span class="tag">FP&amp;A Reporting</span>
+      <div class="card reveal-card">
+        <div class="card-header">
+          <span class="tag">FP&amp;A Reporting</span>
+          <span class="card-num">03</span>
+        </div>
         <h3>Clara — AI Reporting Agent</h3>
-        <p>The FP&amp;A team manually built executive P&amp;L presentations for 8 country subsidiaries every month — pulling Power BI data, calculating variances vs. prior year and budget, writing commentary, and formatting slides. Clara does all of it automatically.</p>
+        <p>The FP&amp;A team spent up to 32 hours every monthly close building executive P&amp;L presentations across 8 country subsidiaries. Pulling data, calculating variances, writing commentary, formatting slides. Clara automated the entire workflow.</p>
         <div class="metrics">
           <div class="metric">
             <span class="metric-num">32 hours</span>
-            <span class="metric-label">reduced to ~2 hrs per cycle</span>
+            <span class="metric-label">reduced to roughly 2 per cycle</span>
           </div>
           <div class="metric">
             <span class="metric-num">8 countries</span>
@@ -91,24 +123,32 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
-    <p class="label">About</p>
-    <h2>Finance insider.<br>AI builder.</h2>
-    <div class="about-body">
-      <p>I'm Reynel Miralles — a Finance student at the University of Florida, based in Miami. I built Aurey because I work inside finance teams and see firsthand how much time gets wasted on manual, repetitive work that AI can fix in seconds.</p>
-      <p>I shipped 3 production tools currently running inside a real multi-subsidiary company operating across 8 countries in Latin America and the Caribbean. I understand the workflows from the inside, I move fast, and I speak the market's language — literally and operationally.</p>
-      <div class="tags">
-        <span>Finance AI</span>
-        <span>Miami · LATAM</span>
-        <span>Python</span>
-        <span>SAP · Power BI</span>
-        <span>English · Spanish</span>
+  <section id="about" class="reveal">
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="eyebrow">About</p>
+        <h2>Finance insider.<br>AI builder.</h2>
+      </div>
+      <div class="about-right">
+        <p>I am Reynel Miralles, a Finance student at the University of Florida (GPA 3.6) and a Finance AI Intern at a Miami-based multinational distributor operating across Latin America and the Caribbean. I shipped 3 production tools in my first weeks on the job and have saved the finance team over 35 hours of manual work every month.</p>
+        <p>I built Aurey because I work inside finance teams and see exactly how much time gets wasted on work that AI can handle in seconds. I understand the workflows from the inside, I move fast, and I build things that actually get used.</p>
+        <p>I am fluent in English and Spanish, based in Miami, and focused on mid-size companies that have real operational pain and want fast solutions.</p>
+        <div class="tags">
+          <span>Finance AI</span>
+          <span>Python</span>
+          <span>SAP Business One</span>
+          <span>Power BI</span>
+          <span>Miami · LATAM</span>
+          <span>English · Spanish</span>
+          <span>University of Florida</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="reveal contact-section">
+    <p class="eyebrow">Contact</p>
     <h2>Let's talk.</h2>
     <p>If your finance team is spending hours on work that should take minutes, I want to hear about it.</p>
     <a href="mailto:reymiralles05@gmail.com" class="btn">Get in touch</a>
@@ -117,8 +157,9 @@
   <!-- FOOTER -->
   <footer>
     <span class="footer-logo">Aurey</span>
-    <span>© 2026 Reynel Miralles</span>
+    <span>2026 · Reynel Miralles · Miami, FL</span>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
