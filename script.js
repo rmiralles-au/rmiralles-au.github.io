@@ -1,58 +1,60 @@
+// ── CURSOR GLOW ──
+const cursorGlow = document.getElementById('cursor-glow');
+let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+let tx = cx, ty = cy;
+
+document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+(function moveCursor() {
+  cx += (tx - cx) * 0.1;
+  cy += (ty - cy) * 0.1;
+  cursorGlow.style.left = cx + 'px';
+  cursorGlow.style.top  = cy + 'px';
+  requestAnimationFrame(moveCursor);
+})();
+
+
 // ── PARTICLE NETWORK ──
 const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-
+const ctx    = canvas.getContext('2d');
 let particles = [];
-let mouse = { x: null, y: null };
-let animFrame;
+let mx = null, my = null;
 
 function resize() {
-  canvas.width = window.innerWidth;
+  canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-
 resize();
 window.addEventListener('resize', () => { resize(); buildParticles(); });
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+document.addEventListener('mouseleave', () => { mx = null; my = null; });
 
-window.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-
-window.addEventListener('mouseleave', () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
-class Particle {
-  constructor() { this.reset(true); }
-
-  reset(random) {
-    this.x  = random ? Math.random() * canvas.width  : (Math.random() > 0.5 ? 0 : canvas.width);
-    this.y  = random ? Math.random() * canvas.height : Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.35;
-    this.vy = (Math.random() - 0.5) * 0.35;
-    this.r  = Math.random() * 1.2 + 0.4;
-    this.a  = Math.random() * 0.45 + 0.15;
+class Dot {
+  constructor(rand) {
+    if (rand) {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+    } else {
+      this.x = Math.random() > 0.5 ? 0 : canvas.width;
+      this.y = Math.random() * canvas.height;
+    }
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.r  = Math.random() * 1.4 + 0.5;
+    this.a  = Math.random() * 0.5 + 0.2;
   }
 
   update() {
-    if (mouse.x !== null) {
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
+    if (mx !== null) {
+      const dx = mx - this.x, dy = my - this.y;
       const d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < 100) {
-        this.x -= (dx / d) * 0.6;
-        this.y -= (dy / d) * 0.6;
-      }
+      if (d < 110) { this.x -= (dx / d) * 0.7; this.y -= (dy / d) * 0.7; }
     }
-
     this.x += this.vx;
     this.y += this.vy;
-
     if (this.x < -20 || this.x > canvas.width + 20 ||
         this.y < -20 || this.y > canvas.height + 20) {
-      this.reset(false);
+      Object.assign(this, new Dot(false));
     }
   }
 
@@ -65,102 +67,98 @@ class Particle {
 }
 
 function buildParticles() {
-  const density = (canvas.width * canvas.height) / 10000;
-  const count   = Math.min(Math.floor(density), 130);
-  particles = Array.from({ length: count }, () => new Particle());
+  const n = Math.min(Math.floor((canvas.width * canvas.height) / 9000), 140);
+  particles = Array.from({ length: n }, () => new Dot(true));
 }
 
 function connect() {
-  const MAX = 140;
+  const MAX = 145;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const d  = Math.sqrt(dx * dx + dy * dy);
       if (d < MAX) {
-        const opacity = (1 - d / MAX) * 0.18;
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(201,168,76,${opacity})`;
-        ctx.lineWidth   = 0.5;
+        ctx.strokeStyle = `rgba(201,168,76,${(1 - d / MAX) * 0.22})`;
+        ctx.lineWidth   = 0.6;
         ctx.stroke();
       }
     }
   }
 }
 
-function tick() {
+buildParticles();
+
+(function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(p => { p.update(); p.draw(); });
   connect();
-  animFrame = requestAnimationFrame(tick);
-}
-
-buildParticles();
-tick();
+  requestAnimationFrame(tick);
+})();
 
 
 // ── SCROLL REVEAL ──
-const revealEls = document.querySelectorAll('.reveal, .reveal-card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-revealEls.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el));
 
 
-// ── STAT COUNTER ANIMATION ──
-function animateCounter(el, target, suffix, duration) {
-  const isDecimal = target % 1 !== 0;
-  let start = null;
+// ── STAT COUNTER ──
+const statsEl   = document.querySelector('.hero-stats');
+let   counted   = false;
 
-  function step(ts) {
-    if (!start) start = ts;
-    const progress = Math.min((ts - start) / duration, 1);
-    const ease     = 1 - Math.pow(1 - progress, 3);
-    const current  = Math.floor(ease * target);
-    el.textContent = (suffix === '$' ? '$' : '') + current + (suffix !== '$' ? suffix : '') + (target > current ? '+' : '');
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = (suffix === '$' ? '$' + target : target + suffix);
-  }
+const STATS = [
+  { el: null, target: 3,  prefix: '',  suffix: ''   },
+  { el: null, target: 35, prefix: '',  suffix: '+'  },
+  { el: null, target: 8,  prefix: '',  suffix: ''   },
+  { el: null, target: 5,  prefix: '$', suffix: 'M+' },
+];
 
-  requestAnimationFrame(step);
+document.querySelectorAll('.stat-num').forEach((el, i) => { STATS[i].el = el; });
+
+function countUp(s) {
+  const dur  = 1000;
+  const start = performance.now();
+  (function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    s.el.textContent = s.prefix + Math.floor(e * s.target) + s.suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else s.el.textContent = s.prefix + s.target + s.suffix;
+  })(start);
 }
 
-const statsSection = document.querySelector('.hero-stats');
-let counted = false;
-
-const statsObserver = new IntersectionObserver((entries) => {
+new IntersectionObserver(entries => {
   if (entries[0].isIntersecting && !counted) {
     counted = true;
-    const nums = document.querySelectorAll('.stat-num');
-    animateCounter(nums[0], 3,   '',   800);
-    animateCounter(nums[1], 35,  '+',  900);
-    animateCounter(nums[2], 8,   '',   800);
-    animateCounter(nums[3], 5,   'M+', 1000);
+    STATS.forEach((s, i) => setTimeout(() => countUp(s), i * 80));
   }
-}, { threshold: 0.5 });
-
-if (statsSection) statsObserver.observe(statsSection);
+}, { threshold: 0.5 }).observe(statsEl);
 
 
-// ── NAV ACTIVE HIGHLIGHT ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
+// ── NAV ACTIVE STATE ──
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 120) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
-  });
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+  links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
 }, { passive: true });
+
+
+// ── CARD MOUSE GLOW TRACKING ──
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x    = ((e.clientX - rect.left) / rect.width)  * 100;
+    const y    = ((e.clientY - rect.top)  / rect.height) * 100;
+    card.querySelector('.card-glow').style.background =
+      `radial-gradient(circle at ${x}% ${y}%, rgba(201,168,76,0.1) 0%, transparent 60%)`;
+  });
+});
