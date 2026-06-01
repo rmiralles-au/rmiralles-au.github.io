@@ -31,39 +31,44 @@ body {
   pointer-events: none;
   z-index: 0;
   will-change: transform;
+  mix-blend-mode: screen;
 }
 
 .orb-1 {
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(201,168,76,0.22) 0%, transparent 65%);
-  top: -200px; left: -150px;
-  filter: blur(80px);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, #C9A84C 0%, #8B5A00 40%, transparent 70%);
+  opacity: 0.45;
+  top: -250px; left: -200px;
+  filter: blur(70px);
   animation: drift1 28s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(232,130,26,0.16) 0%, transparent 65%);
-  bottom: -100px; right: -100px;
-  filter: blur(90px);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #E87F1A 0%, #A05010 40%, transparent 70%);
+  opacity: 0.35;
+  bottom: -150px; right: -150px;
+  filter: blur(80px);
   animation: drift2 22s ease-in-out infinite;
   animation-delay: -9s;
 }
 
 .orb-3 {
-  width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(201,168,76,0.14) 0%, transparent 65%);
-  top: 45%; left: 50%;
-  filter: blur(70px);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #F0B832 0%, #C9A84C 40%, transparent 70%);
+  opacity: 0.28;
+  top: 45%; left: 55%;
+  filter: blur(65px);
   animation: drift3 18s ease-in-out infinite;
   animation-delay: -5s;
 }
 
 .orb-4 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(180,100,20,0.12) 0%, transparent 65%);
-  bottom: 20%; left: -80px;
-  filter: blur(100px);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #D46A0A 0%, #8B3A00 40%, transparent 70%);
+  opacity: 0.25;
+  bottom: 15%; left: -100px;
+  filter: blur(90px);
   animation: drift1 32s ease-in-out infinite;
   animation-delay: -14s;
 }
