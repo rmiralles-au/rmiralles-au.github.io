@@ -35,40 +35,30 @@ body {
 }
 
 .orb-1 {
-  width: 1100px; height: 1100px;
+  width: 600px; height: 600px;
   background: radial-gradient(circle, #C9A84C 0%, #8B5A00 35%, transparent 65%);
-  opacity: 0.32;
-  top: -350px; left: -300px;
-  filter: blur(120px);
+  opacity: 0.14;
+  top: -300px; left: -250px;
+  filter: blur(140px);
   animation: drift1 28s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 900px; height: 900px;
+  width: 550px; height: 550px;
   background: radial-gradient(circle, #E87F1A 0%, #A05010 35%, transparent 65%);
-  opacity: 0.26;
-  bottom: -300px; right: -250px;
-  filter: blur(130px);
+  opacity: 0.12;
+  bottom: -280px; right: -220px;
+  filter: blur(140px);
   animation: drift2 22s ease-in-out infinite;
   animation-delay: -9s;
 }
 
-.orb-3 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, #F0B832 0%, #C9A84C 35%, transparent 65%);
-  opacity: 0.22;
-  top: 40%; left: 50%;
-  filter: blur(100px);
-  animation: drift3 18s ease-in-out infinite;
-  animation-delay: -5s;
-}
-
 .orb-4 {
-  width: 800px; height: 800px;
+  width: 500px; height: 500px;
   background: radial-gradient(circle, #D46A0A 0%, #8B3A00 35%, transparent 65%);
-  opacity: 0.2;
-  bottom: 10%; left: -200px;
-  filter: blur(120px);
+  opacity: 0.1;
+  bottom: -200px; left: -200px;
+  filter: blur(140px);
   animation: drift1 32s ease-in-out infinite;
   animation-delay: -14s;
 }
@@ -84,11 +74,6 @@ body {
   25%     { transform: translate(-70px,30px) scale(1.06); }
   55%     { transform: translate(50px,-60px) scale(0.92); }
   80%     { transform: translate(-20px,40px) scale(1.02); }
-}
-@keyframes drift3 {
-  0%,100% { transform: translate(-50%,-50%) scale(1); }
-  40%     { transform: translate(calc(-50% + 80px), calc(-50% - 40px)) scale(1.1); }
-  70%     { transform: translate(calc(-50% - 40px), calc(-50% + 60px)) scale(0.9); }
 }
 
 /* ── CURSOR GLOW ── */
