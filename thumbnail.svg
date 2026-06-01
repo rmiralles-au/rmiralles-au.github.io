@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg1" cx="20%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#5a3790" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#07070f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg2" cx="85%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#a05a14" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#07070f" stop-opacity="0"/>
+    </radialGradient>
+    <!-- dot grid pattern -->
+    <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.07)"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#07070f"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#bg1)"/>
+  <rect width="1200" height="630" fill="url(#bg2)"/>
+
+  <!-- Gold top border line -->
+  <rect x="0" y="0" width="1200" height="2" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Aurey wordmark -->
+  <text x="80" y="120" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#C9A84C" letter-spacing="6">AUREY</text>
+
+  <!-- Divider -->
+  <rect x="80" y="140" width="60" height="2" fill="#C9A84C" opacity="0.5"/>
+
+  <!-- Main headline -->
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#f0ece6">Finance AI</text>
+  <text x="80" y="305" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#f0ece6">Automation.</text>
+
+  <!-- Sub line -->
+  <text x="82" y="370" font-family="Arial, sans-serif" font-size="24" fill="#9e9890">Built in production. Used by real finance teams.</text>
+
+  <!-- Stats row -->
+  <g transform="translate(80, 440)">
+    <!-- Stat 1 -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#C9A84C">3</text>
+    <text x="0" y="28" font-family="Arial, sans-serif" font-size="14" fill="#6b6560">Tools shipped</text>
+
+    <!-- Stat 2 -->
+    <text x="160" y="0" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#C9A84C">35+</text>
+    <text x="160" y="28" font-family="Arial, sans-serif" font-size="14" fill="#6b6560">Hours saved monthly</text>
+
+    <!-- Stat 3 -->
+    <text x="360" y="0" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#C9A84C">8</text>
+    <text x="360" y="28" font-family="Arial, sans-serif" font-size="14" fill="#6b6560">Countries automated</text>
+
+    <!-- Stat 4 -->
+    <text x="520" y="0" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#C9A84C">$5M+</text>
+    <text x="520" y="28" font-family="Arial, sans-serif" font-size="14" fill="#6b6560">Monthly transactions</text>
+  </g>
+
+  <!-- Right side accent -->
+  <rect x="1100" y="0" width="2" height="630" fill="#C9A84C" opacity="0.08"/>
+
+  <!-- Bottom tag -->
+  <text x="80" y="600" font-family="Arial, sans-serif" font-size="16" fill="#555250">rmiralles-au.github.io</text>
+</svg>
