@@ -209,8 +209,8 @@ const STATS = [
 
 const statEls = [...document.querySelectorAll('.stat-num')];
 const statData = [
-  { target: 3,  pre: '',  suf: ''   },
-  { target: 35, pre: '',  suf: '+'  },
+  { target: 4,  pre: '',  suf: ''   },
+  { target: 50, pre: '',  suf: '+'  },
   { target: 8,  pre: '',  suf: ''   },
   { target: 5,  pre: '$', suf: 'M+' },
 ];
