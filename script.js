@@ -209,7 +209,7 @@ const STATS = [
 
 const statEls = [...document.querySelectorAll('.stat-num')];
 const statData = [
-  { target: 5,  pre: '',  suf: ''   },
+  { target: 6,  pre: '',  suf: ''   },
   { target: 50, pre: '',  suf: '+'  },
   { target: 8,  pre: '',  suf: ''   },
   { target: 5,  pre: '$', suf: 'M+' },
