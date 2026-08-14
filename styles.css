@@ -228,7 +228,7 @@ section h2 {
 .reveal-card:nth-child(3) { transition-delay: 0.24s; }
 
 /* ── CARDS ── */
-#work { border-top: 1px solid var(--border); }
+#work { border-top: 1px solid var(--border); max-width: 1500px; }
 
 .cards {
   display: grid;
