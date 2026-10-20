@@ -1,19 +1,21 @@
 # Next steps: portfolio site
 
-Cloned here from GitHub on 2026-10-19 (MC session) so Claude can edit it. Live at
-https://rmiralles-au.github.io/ from the `main` branch of `rmiralles-au/rmiralles-au.github.io`
-(public). Static: one `index.html`, `styles.css`, `script.js`, two SVGs. A push to `main` is live
-within a minute or two.
+Updated 2026-10-20 (MC session). Live at https://rmiralles-au.github.io/ from the `main` branch of
+`rmiralles-au/rmiralles-au.github.io` (public). A push to `main` is live within a minute or two.
+Static: `index.html`, `styles.css`, `script.js`, `logo.svg` (the RJMC two-line mark), `thumbnail.svg`.
 
 ## Where things stand
 
-- Last change before this clone: 2026-08-14. The page still says "Aurey" where it should say RJMC
-  (PORTFOLIO.md) and is missing the two newest La Cuisine projects.
-- Rey decided on 2026-10-19 to keep editing it (the earlier "take it offline" item in
-  `RJMC/NEXT_STEPS.md` is on hold until he says otherwise).
+- Rebuilt and published 2026-10-19 in the RJMC look (deep blue-black, emerald, Manrope and Figtree),
+  the particle and orb effects kept and recolored. Seventeen cards, short copy; BOLT and the avatar
+  teacher added; "Aurey" gone; copy broadened from finance to manual work in any department; 75+ hours
+  saved a month; Higgsfield named on both video cards (never HeyGen). Employer not named on the page.
+- Working tree clean, everything pushed.
 
 ## Rey decides
 
-- [ ] What to change first: the Aurey mentions, the two newest projects, or a fuller refresh.
-- [ ] Whether the site keeps naming the employer (the RJMC rule is never; this is Rey's personal
-      page, so his call).
+- [ ] The avatar teacher card says "Higgsfield · Claude AI" for its stack. Confirm or correct.
+- [ ] Clara's number: the resume says about 10 hours a month to minutes, the portfolio says 32 hours
+      down to 2. Pick one for both.
+- [ ] Whether the employer's name goes back on this personal page (RJMC material never names it).
+- [ ] A Devpost profile, only when a hackathon is on (Rey has one at UF in view; no team yet).
