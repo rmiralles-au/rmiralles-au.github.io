@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reynel Miralles — Finance AI Builder</title>
-  <meta name="description" content="Finance AI builder based in Miami. I build automation tools that eliminate manual finance workflows." />
-  <!-- Open Graph -->
-  <meta property="og:title"       content="Aurey — Finance AI Automation" />
-  <meta property="og:description" content="5 AI tools in production. $200K in AP automation. 50+ hours of manual work eliminated every month." />
+  <title>Reynel Miralles | Finance and AI builder, Miami</title>
+  <meta name="description" content="Reynel Miralles builds the software and AI systems that do the finance work: 17 tools in production across 8 countries. Founder of RJMC, a software and AI studio in Miami." />
+  <meta property="og:title"       content="Reynel Miralles | Finance and AI builder" />
+  <meta property="og:description" content="17 tools in production across 8 countries. Software and AI that do the finance work." />
   <meta property="og:image"       content="https://rmiralles-au.github.io/thumbnail.svg" />
   <meta property="og:url"         content="https://rmiralles-au.github.io" />
   <meta property="og:type"        content="website" />
   <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="theme-color"        content="#0B1016" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -26,7 +29,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Aurey</div>
+    <a class="nav-logo" href="#hero" aria-label="Top of the page">
+      <span class="mk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 10 6l4 4 6-7.5"/><path d="M4 21.5 10 15l4 4 6-7.5"/></svg></span>
+      <span class="wm">RJMC</span>
+    </a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#about">About</a>
@@ -37,23 +43,23 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <p class="eyebrow load-1">Finance AI Automation &nbsp;·&nbsp; Miami, FL</p>
-      <h1 class="load-2">I build AI tools that <br><span class="gold-text">eliminate</span> manual finance work.</h1>
-      <p class="hero-sub load-3">15 tools built at a multi-subsidiary company operating across 8 countries. Over 50 hours of manual work eliminated every month.</p>
+      <p class="eyebrow load-1">Finance and AI builder &nbsp;·&nbsp; Miami, FL</p>
+      <h1 class="load-2">I build the <span class="accent">systems</span> that do the finance work.</h1>
+      <p class="hero-sub load-3">Seventeen tools shipped inside a Miami-based multinational operating across eight countries. Every one runs in production and gives the team its hours back, month after month.</p>
       <div class="hero-stats load-4">
         <div class="stat">
-          <span class="stat-num" data-target="15" data-suffix="">15</span>
-          <span class="stat-label">Tools shipped</span>
+          <span class="stat-num" data-target="17" data-suffix="">17</span>
+          <span class="stat-label">Tools in production</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
           <span class="stat-num" data-target="50" data-suffix="+">50+</span>
-          <span class="stat-label">Hours saved monthly</span>
+          <span class="stat-label">Hours saved every month</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
           <span class="stat-num" data-target="8" data-suffix="">8</span>
-          <span class="stat-label">Countries automated</span>
+          <span class="stat-label">Countries</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
@@ -61,331 +67,221 @@
           <span class="stat-label">Monthly transactions covered</span>
         </div>
       </div>
-      <a href="#work" class="btn load-5">See the work</a>
+      <a href="#work" class="btn load-5">See the work <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </section>
 
   <!-- WORK -->
   <section id="work">
     <div class="section-head reveal">
-      <p class="eyebrow">Case Studies</p>
+      <p class="eyebrow">Selected work</p>
       <h2>Built. Shipped.<br>Running in production.</h2>
+      <p class="section-sub">Each card is one system, the hours it replaced, and what it runs on.</p>
     </div>
     <div class="cards">
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Accounts Payable</span>
-          <span class="card-idx">01</span>
-        </div>
-        <h3>AP Statement Automation</h3>
-        <p>The AP team manually processed payable statements every month, nearly $200K in transactions, entering each line into SAP by hand, a full day of work, every single month. I built an automated pipeline that reads the statements, extracts every transaction, and outputs a clean SAP-ready Excel file in minutes.</p>
+        <div class="card-top"><span class="tag">FP&amp;A reporting</span><span class="card-idx">01</span></div>
+        <h3>Clara: AI reporting agent</h3>
+        <p>Give it a country and a period and it returns the executive P&amp;L deck: Power BI data pulled, variances computed, commentary written, slides formatted. Thirty-two hours of close work, down to about two.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">~1 full day</span>
-            <span class="mlabel">reduced to minutes</span>
-          </div>
-          <div class="metric">
-            <span class="mval">$200K</span>
-            <span class="mlabel">processed every month</span>
-          </div>
-        </div>
-        <p class="stack">Python &nbsp;·&nbsp; Claude API &nbsp;·&nbsp; openpyxl</p>
-      </div>
-
-      <div class="card reveal-card">
-        <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Sales Commissions</span>
-          <span class="card-idx">02</span>
-        </div>
-        <h3>Commissions Automation</h3>
-        <p>The Regional Financial Controller processed 500+ SAP line items monthly, applying tiered commission rules by hand and building an Excel report for each salesperson in the company. I built a web application that ingests the raw export, applies every commission rule automatically, and delivers each rep's formatted report in one click.</p>
-        <div class="metrics">
-          <div class="metric">
-            <span class="mval">4 to 8 hours</span>
-            <span class="mlabel">reduced to under 2 minutes</span>
-          </div>
-          <div class="metric">
-            <span class="mval">$5M+</span>
-            <span class="mlabel">in monthly sales covered</span>
-          </div>
-        </div>
-        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; pandas &nbsp;·&nbsp; openpyxl</p>
-      </div>
-
-      <div class="card reveal-card">
-        <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">FP&amp;A Reporting</span>
-          <span class="card-idx">03</span>
-        </div>
-        <h3>Clara: AI Reporting Agent</h3>
-        <p>The FP&amp;A team spent up to 32 hours every monthly close manually building executive P&amp;L presentations for 8 country subsidiaries, pulling Power BI data, calculating variances, writing commentary, and formatting slides. I built Clara, an AI agent that takes a country and a period, runs the full financial analysis, and delivers a complete executive PowerPoint in minutes.</p>
-        <div class="metrics">
-          <div class="metric">
-            <span class="mval">32 hours</span>
-            <span class="mlabel">reduced to roughly 2 per cycle</span>
-          </div>
-          <div class="metric">
-            <span class="mval">8 countries</span>
-            <span class="mlabel">automated every close</span>
-          </div>
+          <div class="metric"><span class="mval">32 hours</span><span class="mlabel">down to about 2 per close</span></div>
+          <div class="metric"><span class="mval">8 countries</span><span class="mlabel">every monthly close</span></div>
         </div>
         <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; python-pptx</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Credit &amp; Treasury</span>
-          <span class="card-idx">04</span>
-        </div>
-        <h3>Credit Limit Forecast Automation</h3>
-        <p>The FP&amp;A team manually built a monthly credit utilization forecast for every European supplier, parsing invoice statements, scheduling payments by due date, converting multi-currency purchases, and constructing the table formula by formula from scratch each month. I built a tool that takes two files and a single prompt, then runs the full financial analysis and delivers a professionally formatted forecast report in minutes.</p>
+        <div class="card-top"><span class="tag">Builder operations</span><span class="card-idx">02</span></div>
+        <h3>BOLT: delivery and installation tracker</h3>
+        <p>Tracks every appliance in every unit of a multi-family project, from delivery to installed and approved: serial numbers, photos, installer, status and issues, kept as evidence for disputes with general contractors. It also forecasts the project pipeline and installer capacity. Installers use it from an iPad on site.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">1–2 hours</span>
-            <span class="mlabel">reduced to under 3 minutes</span>
-          </div>
-          <div class="metric">
-            <span class="mval">6+ suppliers</span>
-            <span class="mlabel">automated with zero extra setup</span>
-          </div>
+          <div class="metric"><span class="mval">Every appliance</span><span class="mlabel">serial number to sign-off, per unit</span></div>
+          <div class="metric"><span class="mval">Pipeline forecast</span><span class="mlabel">projects and installer capacity</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Claude AI &nbsp;·&nbsp; openpyxl</p>
+        <p class="stack">Python &nbsp;·&nbsp; Django &nbsp;·&nbsp; PostgreSQL</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Supply Chain</span>
-          <span class="card-idx">05</span>
-        </div>
-        <h3>RUTA: Lead Time Lookup Assistant</h3>
-        <p>Lead time questions at La Cuisine meant either interrupting the one person in Supply Chain who maintained a complex multi-tab Excel model, or navigating it yourself across 40 suppliers, 9 destination markets, and 5 different route types. I built RUTA, a conversational AI assistant that answers any lead time question in plain language, returning a complete stage-by-stage breakdown plus supplier-specific operational context like incoterms, MOQs, and real vs. quoted production times. The knowledge base is script-generated directly from the source Excel so it stays accurate when the data changes.</p>
+        <div class="card-top"><span class="tag">People and onboarding</span><span class="card-idx">03</span></div>
+        <h3>Avatar teacher for new hires</h3>
+        <p>An AI avatar that onboards new people for the HR team: it teaches the brands the company carries, how the company works and what a new hire needs to know in the first weeks, and answers their questions in conversation instead of a slide deck.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">~40 suppliers</span>
-            <span class="mlabel">across 9 destination markets</span>
-          </div>
-          <div class="metric">
-            <span class="mval">5 route types</span>
-            <span class="mlabel">up to 11 stages per query</span>
-          </div>
+          <div class="metric"><span class="mval">Brand by brand</span><span class="mlabel">taught in conversation, on demand</span></div>
+          <div class="metric"><span class="mval">Self-serve</span><span class="mlabel">no live session needed from HR</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; openpyxl</p>
+        <p class="stack">AI avatar &nbsp;·&nbsp; Claude AI</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Executive Reporting</span>
-          <span class="card-idx">06</span>
-        </div>
-        <h3>Salesforce Adoption KPI Automation</h3>
-        <p>After migrating 8 countries from SAP to Salesforce, leadership needed monthly and quarterly adoption reports measuring 5 KPIs per country, built by hand from 4 separate exports, cleaned in Excel, calculated manually, and rebuilt into a 17-slide executive deck in Canva. The better part of a workday, every reporting cycle. I built an automation that takes the raw Salesforce exports exactly as downloaded, processes ~14,000 records per cycle, computes all 5 KPIs and a composite adoption score per country, and generates the complete executive PowerPoint in under 2 minutes.</p>
+        <div class="card-top"><span class="tag">Commercial operations</span><span class="card-idx">04</span></div>
+        <h3>Torre de Control: sales and inventory agent</h3>
+        <p>Takes the two files the Colombia team already exports and returns five formatted reports in under two minutes: sales against budget, product advance, inventory coverage, coverage against budget and forecast accuracy. Its first run flagged 169 SKUs at stockout risk and found a counting error in the company's own spreadsheet.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">~1 workday</span>
-            <span class="mlabel">reduced to under 2 minutes</span>
-          </div>
-          <div class="metric">
-            <span class="mval">8 countries</span>
-            <span class="mlabel">5 KPIs across ~14K records per cycle</span>
-          </div>
-        </div>
-        <p class="stack">Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; python-pptx &nbsp;·&nbsp; Claude AI</p>
-      </div>
-
-      <div class="card reveal-card">
-        <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Commercial Operations</span>
-          <span class="card-idx">07</span>
-        </div>
-        <h3>Torre de Control COL: Sales &amp; Inventory Agent</h3>
-        <p>Colombia's commercial operation ran on hand-built Excel. Every month the team manually re-pivoted ~29,000 ERP rows against budget across 22 salespeople, while inventory coverage for 1,500 SKUs depended on a 14-sheet macro workbook maintained by a single person. I built Torre de Control, an AI analysis agent that takes the two files the team already exports and delivers five fully formatted reports in under 2 minutes: sales vs. budget, product-level advance, inventory coverage, coverage vs. budget, and forecast accuracy. The first run immediately flagged 169 SKUs at stockout risk and found one flagship brand's inventory covered only 12% of its upcoming sales target. It also caught a calculation error in the company's own spreadsheet: committed inventory had been systematically undercounted because order lines were counted instead of quantities, meaning prior purchasing decisions had been made on understated data.</p>
-        <div class="metrics">
-          <div class="metric">
-            <span class="mval">~$10.8M</span>
-            <span class="mlabel">annual sales budget monitored</span>
-          </div>
-          <div class="metric">
-            <span class="mval">Multi-hour rebuild</span>
-            <span class="mlabel">reduced to under 2 minutes</span>
-          </div>
+          <div class="metric"><span class="mval">$10.8M</span><span class="mlabel">annual sales budget monitored</span></div>
+          <div class="metric"><span class="mval">Hours</span><span class="mlabel">down to under 2 minutes</span></div>
         </div>
         <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; openpyxl &nbsp;·&nbsp; Streamlit</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Sales Operations</span>
-          <span class="card-idx">08</span>
-        </div>
-        <h3>Inventory to Sales Matching Automation</h3>
-        <p>The retail operations team needed to enrich a 395-line inventory report with salesperson and order data that only existed in a separate sales export. There was no shared key, item numbers were stored inconsistently as text, integers, and floats across both files, and the relationship was one-to-many, meaning a standard VLOOKUP would silently return wrong results by grabbing only the first match. I built an automation that normalizes identifiers across both files, resolves every one-to-many match correctly, and outputs the enriched report with the original formatting fully preserved.</p>
+        <div class="card-top"><span class="tag">Sales commissions</span><span class="card-idx">05</span></div>
+        <h3>Commissions automation</h3>
+        <p>Reads the monthly SAP export, applies every tiered commission rule and delivers each salesperson's formatted report in one click. Five hundred line items that took the controller most of a day now take two minutes.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">99% match rate</span>
-            <span class="mlabel">across 395 items and 2,912 records</span>
-          </div>
-          <div class="metric">
-            <span class="mval">2 hours</span>
-            <span class="mlabel">saved per report cycle</span>
-          </div>
+          <div class="metric"><span class="mval">4 to 8 hours</span><span class="mlabel">down to under 2 minutes</span></div>
+          <div class="metric"><span class="mval">$5M+</span><span class="mlabel">in monthly sales covered</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; openpyxl</p>
+        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; pandas &nbsp;·&nbsp; openpyxl</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Executive Reporting</span>
-          <span class="card-idx">09</span>
-        </div>
-        <h3>Executive Operations Dashboard</h3>
-        <p>Every week, La Cuisine's operations team manually consolidated sales, order, inventory, and financial data from 10 country subsidiaries, pulling Power BI exports, capturing dashboard screenshots, and assembling an executive PowerPoint from scratch before delivering it to the company owner and CEO. I built an AI reporting agent that ingests those files and images, synthesizes performance indicators across all 10 subsidiaries, and generates a fully formatted executive presentation in minutes. The report covers sales compliance, open-order pipeline, balance sheet, and inventory health across Latin America and the Caribbean, and the team now runs it independently every week with no technical oversight required.</p>
+        <div class="card-top"><span class="tag">Accounts payable</span><span class="card-idx">06</span></div>
+        <h3>AP statement automation</h3>
+        <p>Reads vendor statements, extracts every transaction and writes a clean SAP-ready import file. A full day of keying, every month, replaced by minutes.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">10 subsidiaries</span>
-            <span class="mlabel">consolidated into one weekly report</span>
-          </div>
-          <div class="metric">
-            <span class="mval">4 KPI categories</span>
-            <span class="mlabel">automated across 8 countries</span>
-          </div>
+          <div class="metric"><span class="mval">1 full day</span><span class="mlabel">down to minutes</span></div>
+          <div class="metric"><span class="mval">$200K</span><span class="mlabel">processed every month</span></div>
+        </div>
+        <p class="stack">Python &nbsp;·&nbsp; Claude API &nbsp;·&nbsp; openpyxl</p>
+      </div>
+
+      <div class="card reveal-card">
+        <div class="card-glow"></div>
+        <div class="card-top"><span class="tag">Executive reporting</span><span class="card-idx">07</span></div>
+        <h3>Executive operations dashboard</h3>
+        <p>Consolidates sales, orders, inventory and financials from ten subsidiaries into one weekly executive deck for the owner and the CEO. The operations team runs it on its own, every week, with no technical help.</p>
+        <div class="metrics">
+          <div class="metric"><span class="mval">10 subsidiaries</span><span class="mlabel">in one weekly report</span></div>
+          <div class="metric"><span class="mval">4 KPI areas</span><span class="mlabel">across 8 countries</span></div>
         </div>
         <p class="stack">Claude AI &nbsp;·&nbsp; Python</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Sales &amp; Quoting</span>
-          <span class="card-idx">10</span>
-        </div>
-        <h3>Outdoor Kitchens Quote Agent</h3>
-        <p>La Cuisine's outdoor kitchen sales team quoted each project by hand, manually cross-referencing a multi-SKU product catalog, calculating per-country pricing with local tax rates, and assembling customer proposals from scratch in a process that required deep product knowledge and slowed every deal. I built a conversational AI agent that collects project requirements through a natural-language dialogue, extracts the relevant SKUs, runs a Python pricing engine against the official price book, generates a front-elevation layout render of the configured kitchen, and produces a complete formatted quote.</p>
+        <div class="card-top"><span class="tag">Executive reporting</span><span class="card-idx">08</span></div>
+        <h3>Salesforce adoption KPIs</h3>
+        <p>Takes the raw Salesforce exports as downloaded, computes five KPIs and a composite adoption score per country across about 14,000 records, and produces the executive deck in under two minutes.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">Full catalog</span>
-            <span class="mlabel">priced with local tax, per country</span>
-          </div>
-          <div class="metric">
-            <span class="mval">Quote + layout render</span>
-            <span class="mlabel">generated in one conversation</span>
-          </div>
+          <div class="metric"><span class="mval">1 workday</span><span class="mlabel">down to under 2 minutes</span></div>
+          <div class="metric"><span class="mval">8 countries</span><span class="mlabel">5 KPIs, about 14K records per cycle</span></div>
+        </div>
+        <p class="stack">Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; python-pptx &nbsp;·&nbsp; Claude AI</p>
+      </div>
+
+      <div class="card reveal-card">
+        <div class="card-glow"></div>
+        <div class="card-top"><span class="tag">Sales and quoting</span><span class="card-idx">09</span></div>
+        <h3>Outdoor kitchens quote agent</h3>
+        <p>A conversation collects the project. The agent picks the SKUs, prices them against the official price book with each country's tax, renders a front-elevation layout of the kitchen and returns a complete quote.</p>
+        <div class="metrics">
+          <div class="metric"><span class="mval">Full catalog</span><span class="mlabel">priced per country, tax included</span></div>
+          <div class="metric"><span class="mval">Quote and render</span><span class="mlabel">from one conversation</span></div>
         </div>
         <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; openpyxl</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Customer Marketing</span>
-          <span class="card-idx">11</span>
-        </div>
-        <h3>AI Post-Purchase Email Automation</h3>
-        <p>La Cuisine's e-commerce fulfillments shipped with no structured follow-up, no product education, no personalized recommendations, leaving post-purchase customer engagement entirely unaddressed and dependent on whoever had time to write something. I built an application that reads fulfilled order data, uses Claude to generate brand-appropriate emails personalized to each customer's exact purchase, and delivers them automatically through an API-powered send pipeline that handles delivery, logging, and unsubscribe management without any manual intervention. The result is a repeatable, AI-driven system that scales across every fulfilled order with zero additional effort.</p>
+        <div class="card-top"><span class="tag">Credit and treasury</span><span class="card-idx">10</span></div>
+        <h3>Credit limit forecast</h3>
+        <p>Two files and one prompt produce the monthly credit utilization forecast for every European supplier: statements parsed, payments scheduled by due date, currencies converted, the table built and formatted.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">Fully personalized</span>
-            <span class="mlabel">per customer purchase, zero manual copywriting</span>
-          </div>
-          <div class="metric">
-            <span class="mval">Automated pipeline</span>
-            <span class="mlabel">with send log and unsubscribe management</span>
-          </div>
+          <div class="metric"><span class="mval">1 to 2 hours</span><span class="mlabel">down to under 3 minutes</span></div>
+          <div class="metric"><span class="mval">6+ suppliers</span><span class="mlabel">with no extra setup</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; Claude AI</p>
+        <p class="stack">Python &nbsp;·&nbsp; Claude AI &nbsp;·&nbsp; openpyxl</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Logistics &amp; Finance</span>
-          <span class="card-idx">12</span>
-        </div>
-        <h3>Freight Invoice Classifier</h3>
-        <p>La Cuisine's logistics team received carrier invoices from FedEx and other freight providers as raw, unstructured PDFs. Every shipment line had to be manually reviewed, sorted by direction, categorized by recipient type, and separated from non-freight charges like address corrections and late fees before the data was usable for accounting. I built an automated pipeline that reads those PDF invoices, uses Claude to extract and classify every individual shipment, and outputs a structured Excel with each line categorized by freight direction, recipient type, and charge classification across five categories. The result is accounting-ready freight data produced directly from the carrier's PDF, with no manual review required.</p>
+        <div class="card-top"><span class="tag">Supply chain</span><span class="card-idx">11</span></div>
+        <h3>RUTA: lead-time assistant</h3>
+        <p>Answers any lead-time question in plain language across 40 suppliers, 9 markets and 5 route types, with a stage-by-stage breakdown, incoterms and minimum order quantities. Its knowledge base is generated straight from the source workbook, so it stays right when the data changes.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">PDF to structured Excel</span>
-            <span class="mlabel">per carrier invoice, automated</span>
-          </div>
-          <div class="metric">
-            <span class="mval">5 recipient categories</span>
-            <span class="mlabel">classified per shipment line</span>
-          </div>
+          <div class="metric"><span class="mval">40 suppliers</span><span class="mlabel">across 9 destination markets</span></div>
+          <div class="metric"><span class="mval">5 route types</span><span class="mlabel">up to 11 stages per answer</span></div>
+        </div>
+        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; openpyxl</p>
+      </div>
+
+      <div class="card reveal-card">
+        <div class="card-glow"></div>
+        <div class="card-top"><span class="tag">Logistics and finance</span><span class="card-idx">12</span></div>
+        <h3>Freight invoice classifier</h3>
+        <p>Reads carrier invoices as PDFs, extracts every shipment line and classifies it by direction, recipient type and charge class into an accounting-ready spreadsheet. No manual review.</p>
+        <div class="metrics">
+          <div class="metric"><span class="mval">PDF to Excel</span><span class="mlabel">per carrier invoice, automatically</span></div>
+          <div class="metric"><span class="mval">5 categories</span><span class="mlabel">classified per shipment line</span></div>
         </div>
         <p class="stack">Python &nbsp;·&nbsp; Claude AI &nbsp;·&nbsp; pdfplumber &nbsp;·&nbsp; pandas</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Internal Communications</span>
-          <span class="card-idx">13</span>
-        </div>
-        <h3>NosImporta: AI Video Series</h3>
-        <p>La Cuisine's internal values campaign, NosImporta, needed a content series to communicate company culture and shared principles across all subsidiaries without the cost or logistics of traditional video production. I produced approximately 20 short-form AI-generated videos using HeyGen, each translating a specific company value into an engaging visual format ready for distribution across the organization. The result is a full-length content library that brought the NosImporta initiative to life at a fraction of the time and cost of conventional production.</p>
+        <div class="card-top"><span class="tag">E-commerce and finance</span><span class="card-idx">13</span></div>
+        <h3>Amazon settlement to SAP</h3>
+        <p>Groups the dozens of component rows behind each Amazon order into one clean line, maps identifiers to SAP codes and writes a DTW-ready import for invoices and credits in seconds. A reconciliation check compares the output to the source total before anything is uploaded.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">~20 videos</span>
-            <span class="mlabel">produced for the NosImporta campaign</span>
-          </div>
-          <div class="metric">
-            <span class="mval">Zero production crew</span>
-            <span class="mlabel">AI-generated, company-wide distribution</span>
-          </div>
+          <div class="metric"><span class="mval">Seconds</span><span class="mlabel">instead of hundreds of rows by hand</span></div>
+          <div class="metric"><span class="mval">Reconciled</span><span class="mlabel">before the SAP upload</span></div>
         </div>
-        <p class="stack">HeyGen</p>
+        <p class="stack">HTML &nbsp;·&nbsp; JavaScript &nbsp;·&nbsp; ExcelJS</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">Sales Operations</span>
-          <span class="card-idx">14</span>
-        </div>
-        <h3>OSM: Open Sales Order Dashboard</h3>
-        <p>La Cuisine's sales operations team had no centralized view of open sales orders for their Costa Rica subsidiary, requiring manual navigation of raw SAP exports and cross-referencing across multiple files to assess order status, aging, and fulfillment gaps. I built a local HTML dashboard that ingests the open order exports and presents a structured, filterable view of every outstanding order with status indicators and volume summaries, accessible directly in the browser with no installation or infrastructure required. The dashboard gives the commercial team instant pipeline visibility without touching SAP.</p>
+        <div class="card-top"><span class="tag">Sales operations</span><span class="card-idx">14</span></div>
+        <h3>Inventory to sales matching</h3>
+        <p>Joins a 395-line inventory report to a sales export that shares no key and stores item numbers three different ways, resolves every one-to-many match a lookup would get wrong, and keeps the original formatting intact.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">Instant visibility</span>
-            <span class="mlabel">into the open order pipeline</span>
-          </div>
-          <div class="metric">
-            <span class="mval">No infrastructure</span>
-            <span class="mlabel">runs entirely in the browser</span>
-          </div>
+          <div class="metric"><span class="mval">99% matched</span><span class="mlabel">395 items, 2,912 records</span></div>
+          <div class="metric"><span class="mval">2 hours</span><span class="mlabel">saved per report cycle</span></div>
+        </div>
+        <p class="stack">Python &nbsp;·&nbsp; openpyxl</p>
+      </div>
+
+      <div class="card reveal-card">
+        <div class="card-glow"></div>
+        <div class="card-top"><span class="tag">Customer marketing</span><span class="card-idx">15</span></div>
+        <h3>Post-purchase email automation</h3>
+        <p>Reads fulfilled orders, writes a brand-appropriate email personalized to each purchase and sends it through a pipeline with delivery logging and unsubscribe handling. Every order, no copywriting.</p>
+        <div class="metrics">
+          <div class="metric"><span class="mval">Personalized</span><span class="mlabel">to each customer's exact purchase</span></div>
+          <div class="metric"><span class="mval">Automated</span><span class="mlabel">send log and unsubscribes handled</span></div>
+        </div>
+        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; Claude AI</p>
+      </div>
+
+      <div class="card reveal-card">
+        <div class="card-glow"></div>
+        <div class="card-top"><span class="tag">Sales operations</span><span class="card-idx">16</span></div>
+        <h3>OSM: open sales order dashboard</h3>
+        <p>A browser dashboard over the open order exports for Costa Rica: every outstanding order with status, aging and volume summaries, filterable, with nothing to install and no need to open SAP.</p>
+        <div class="metrics">
+          <div class="metric"><span class="mval">Instant view</span><span class="mlabel">of the open order pipeline</span></div>
+          <div class="metric"><span class="mval">No setup</span><span class="mlabel">runs in the browser</span></div>
         </div>
         <p class="stack">HTML &nbsp;·&nbsp; JavaScript</p>
       </div>
 
       <div class="card reveal-card">
         <div class="card-glow"></div>
-        <div class="card-top">
-          <span class="tag">E-Commerce &amp; Finance</span>
-          <span class="card-idx">15</span>
-        </div>
-        <h3>Amazon Settlement to SAP Automation</h3>
-        <p>La Cuisine's e-commerce team received Amazon's periodic settlement reports as raw, multi-row transaction files where every order appeared as dozens of individual component rows, commissions, taxes, shipping fees, and restocking charges, that had to be manually consolidated, translated to SAP article codes, and restructured into the exact DTW import format before anything could be posted to the ERP. The tool ingests the raw Amazon report alongside the SKU catalog, groups every component into a single clean order line, maps Amazon identifiers to SAP codes, and outputs a DTW-ready file for both invoices and credits in seconds. A built-in reconciliation check flags any difference between the source total and the consolidated output before the file is uploaded to SAP, eliminating the risk of undetected discrepancies.</p>
+        <div class="card-top"><span class="tag">Internal communications</span><span class="card-idx">17</span></div>
+        <h3>NosImporta: AI video series</h3>
+        <p>About twenty short AI-generated videos, one per company value, produced for the internal culture campaign and shared across every subsidiary without a crew or a shoot.</p>
         <div class="metrics">
-          <div class="metric">
-            <span class="mval">Seconds</span>
-            <span class="mlabel">vs. manual consolidation of hundreds of rows</span>
-          </div>
-          <div class="metric">
-            <span class="mval">Built-in reconciliation</span>
-            <span class="mlabel">flags discrepancies before SAP upload</span>
-          </div>
+          <div class="metric"><span class="mval">20 videos</span><span class="mlabel">one per value</span></div>
+          <div class="metric"><span class="mval">No crew</span><span class="mlabel">AI-generated, company-wide</span></div>
         </div>
-        <p class="stack">HTML &nbsp;·&nbsp; JavaScript &nbsp;·&nbsp; ExcelJS</p>
+        <p class="stack">HeyGen</p>
       </div>
 
     </div>
@@ -399,18 +295,19 @@
         <h2>Finance insider.<br>AI builder.</h2>
         <div class="tags">
           <span>Python</span>
-          <span>Claude AI</span>
+          <span>Claude</span>
           <span>SAP Business One</span>
           <span>Power BI</span>
-          <span>Miami · LATAM</span>
-          <span>English · Spanish</span>
+          <span>Salesforce</span>
+          <span>Miami · Latin America</span>
+          <span>Spanish · English</span>
           <span>University of Florida</span>
         </div>
       </div>
       <div class="about-right">
-        <p>I am Reynel Miralles, a student at the University of Florida and a Finance AI Intern at a Miami-based multinational company operating across Latin America and the Caribbean. I have built 15 tools, eliminated over 50 hours of monthly manual work, and automated operations spanning 8 countries.</p>
-        <p>I built Aurey because I work inside finance teams and see exactly how much time gets wasted on work that AI can handle in seconds. I understand the workflows from the inside, I move fast, and I build things that are deployed and running in production — not prototypes.</p>
-        <p>I am based in Miami, fluent in English and Spanish, and focused on mid-size companies with real operational pain that want fast, high-quality solutions.</p>
+        <p>I am Reynel Miralles, a finance student at the University of Florida and a Finance AI intern at a Miami-based multinational with subsidiaries across Latin America and the Caribbean. I work directly with the CEO and the CFO, and I have shipped seventeen tools that run in production across eight countries.</p>
+        <p>I build from inside the finance team, so I know exactly which hours are wasted and what a system has to get right to be trusted with the month. Every tool here was built on real files, handed over documented, and is still running.</p>
+        <p>I founded RJMC, a software and AI studio in Miami, to do the same for companies across Latin America and the United States. Based in Miami. Fluent in Spanish and English.</p>
       </div>
     </div>
   </section>
@@ -420,13 +317,13 @@
     <div class="contact-wrap reveal">
       <p class="eyebrow">Contact</p>
       <h2>Let's talk.</h2>
-      <p>If your finance team is spending hours on work that should take minutes, I want to hear about it.</p>
+      <p>If your team spends hours on work that should take minutes, I want to hear about it.</p>
       <a href="mailto:reymiralles05@gmail.com" class="btn">Get in touch</a>
     </div>
   </section>
 
   <footer>
-    <span class="footer-brand">Aurey</span>
+    <span class="footer-brand">RJMC</span>
     <span>2026 &nbsp;·&nbsp; Reynel Miralles &nbsp;·&nbsp; Miami, FL</span>
   </footer>
 

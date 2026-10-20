@@ -1,7 +1,5 @@
-// ══════════════════════════════════════════════
-//  FLOW FIELD — particles follow force lines
-//  Mouse repels · Click = shockwave explosion
-// ══════════════════════════════════════════════
+// Flow field: particles follow force lines. The mouse repels them, a click sends out a shockwave.
+// Colors since 2026-10-19: emerald trails and connections, white heads (the RJMC look).
 
 const canvas = document.getElementById('particles');
 const ctx    = canvas.getContext('2d');
@@ -19,10 +17,10 @@ window.addEventListener('resize', () => { resize(); init(); });
 window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 window.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
 window.addEventListener('click', e => {
+  if (e.target.closest('a, button')) return;
   shockwaves.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.7 });
 });
 
-// ── FLOW ANGLE at (x,y,t) ──
 function flow(x, y, t) {
   const s = 0.0022;
   return (
@@ -31,7 +29,6 @@ function flow(x, y, t) {
   ) * Math.PI;
 }
 
-// ── PARTICLE CLASS ──
 class Particle {
   constructor(rand) {
     this.trail = [];
@@ -58,7 +55,6 @@ class Particle {
     this.vx += (tx - this.vx) * 0.06;
     this.vy += (ty - this.vy) * 0.06;
 
-    // Mouse repulsion
     const dx = this.x - mx, dy = this.y - my;
     const d  = Math.sqrt(dx * dx + dy * dy);
     if (d < 130 && d > 0.1) {
@@ -67,7 +63,6 @@ class Particle {
       this.vy += (dy / d) * f;
     }
 
-    // Shockwave push
     for (const sw of shockwaves) {
       const sx = this.x - sw.x, sy = this.y - sw.y;
       const sd = Math.sqrt(sx * sx + sy * sy);
@@ -79,7 +74,6 @@ class Particle {
       }
     }
 
-    // Store trail
     this.trail.push({ x: this.x, y: this.y });
     if (this.trail.length > 14) this.trail.shift();
 
@@ -96,26 +90,23 @@ class Particle {
     const ageFade = this.life < 80 ? this.life / 80 : 1;
     const n = this.trail.length;
 
-    // Draw trail
     for (let i = 1; i < n; i++) {
       const p = i / n;
       ctx.beginPath();
       ctx.moveTo(this.trail[i - 1].x, this.trail[i - 1].y);
       ctx.lineTo(this.trail[i].x, this.trail[i].y);
-      ctx.strokeStyle = `rgba(201,168,76,${p * this.alpha * 0.5 * ageFade})`;
+      ctx.strokeStyle = `rgba(52,211,153,${p * this.alpha * 0.5 * ageFade})`;
       ctx.lineWidth   = this.size * p;
       ctx.stroke();
     }
 
-    // Draw head
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(220,185,90,${this.alpha * ageFade})`;
+    ctx.fillStyle = `rgba(235,250,244,${this.alpha * ageFade})`;
     ctx.fill();
   }
 }
 
-// ── CONNECTIONS ──
 function drawConnections() {
   const MAX = 85;
   for (let i = 0; i < particles.length; i++) {
@@ -128,7 +119,7 @@ function drawConnections() {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(201,168,76,${(1 - d / MAX) * 0.14})`;
+        ctx.strokeStyle = `rgba(52,211,153,${(1 - d / MAX) * 0.14})`;
         ctx.lineWidth   = 0.5;
         ctx.stroke();
       }
@@ -136,13 +127,11 @@ function drawConnections() {
   }
 }
 
-// ── INIT ──
 function init() {
   const n = Math.min(Math.floor(W * H / 7500), 200);
   particles = Array.from({ length: n }, () => new Particle(true));
 }
 
-// ── LOOP ──
 (function tick() {
   ctx.clearRect(0, 0, W, H);
   time += 0.007;
@@ -150,21 +139,19 @@ function init() {
   particles.forEach(p => { p.update(time); p.draw(); });
   drawConnections();
 
-  // Shockwave rings
   shockwaves = shockwaves.filter(sw => sw.alpha > 0.015);
   shockwaves.forEach(sw => {
     sw.r     += 7;
     sw.alpha *= 0.93;
     ctx.beginPath();
     ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
-    ctx.strokeStyle = `rgba(201,168,76,${sw.alpha * 0.5})`;
+    ctx.strokeStyle = `rgba(52,211,153,${sw.alpha * 0.5})`;
     ctx.lineWidth   = 1.5;
     ctx.stroke();
-    // Inner ring
     if (sw.r > 20) {
       ctx.beginPath();
       ctx.arc(sw.x, sw.y, sw.r * 0.6, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(240,200,100,${sw.alpha * 0.25})`;
+      ctx.strokeStyle = `rgba(94,227,176,${sw.alpha * 0.25})`;
       ctx.lineWidth   = 0.8;
       ctx.stroke();
     }
@@ -175,10 +162,7 @@ function init() {
 
 init();
 
-
-// ══════════════════════════════════════════════
-//  CURSOR GLOW (smooth follow)
-// ══════════════════════════════════════════════
+// Cursor glow: smooth follow
 const glow = document.getElementById('cursor-glow');
 let gx = W / 2, gy = H / 2, gtx = gx, gty = gy;
 document.addEventListener('mousemove', e => { gtx = e.clientX; gty = e.clientY; });
@@ -190,33 +174,19 @@ document.addEventListener('mousemove', e => { gtx = e.clientX; gty = e.clientY; 
   requestAnimationFrame(moveGlow);
 })();
 
-
-// ══════════════════════════════════════════════
-//  SCROLL REVEAL
-// ══════════════════════════════════════════════
+// Scroll reveal
 const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal, .reveal-card').forEach(el => revObs.observe(el));
 
-
-// ══════════════════════════════════════════════
-//  STAT COUNTER
-// ══════════════════════════════════════════════
-const STATS = [
-  { selector: '.stat-num', targets: [3, 35, 8, 5], prefixes: ['','','','$'], suffixes: ['','+','','M+'] }
-];
-
+// Stat counter: the targets come from the HTML (data-target, data-suffix), so the copy is the single source
 const statEls = [...document.querySelectorAll('.stat-num')];
-const statData = [
-  { target: 15, pre: '',  suf: ''   },
-  { target: 50, pre: '',  suf: '+'  },
-  { target: 8,  pre: '',  suf: ''   },
-  { target: 5,  pre: '$', suf: 'M+' },
-];
 let counted = false;
 
-function countUp(el, target, pre, suf) {
+function countUp(el) {
+  const target = +el.getAttribute('data-target'), suf = el.getAttribute('data-suffix') || '';
+  const pre = /^\$/.test(el.textContent) ? '$' : '';
   const start = performance.now();
   const dur   = 1100;
   (function step(now) {
@@ -231,20 +201,17 @@ function countUp(el, target, pre, suf) {
 new IntersectionObserver(entries => {
   if (entries[0].isIntersecting && !counted) {
     counted = true;
-    statEls.forEach((el, i) => setTimeout(() => countUp(el, statData[i].target, statData[i].pre, statData[i].suf), i * 100));
+    statEls.forEach((el, i) => setTimeout(() => countUp(el), i * 100));
   }
 }, { threshold: 0.5 }).observe(document.querySelector('.hero-stats'));
 
-
-// ══════════════════════════════════════════════
-//  NAV ACTIVE + CARD MOUSE GLOW
-// ══════════════════════════════════════════════
+// Nav: the current section's link reads white; cards glow where the mouse is
 const secs  = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let cur = '';
   secs.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
-  links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
+  links.forEach(a => { a.classList.toggle('on', a.getAttribute('href') === '#' + cur); });
 }, { passive: true });
 
 document.querySelectorAll('.card').forEach(card => {
@@ -253,6 +220,6 @@ document.querySelectorAll('.card').forEach(card => {
     const x = ((e.clientX - r.left) / r.width)  * 100;
     const y = ((e.clientY - r.top)  / r.height) * 100;
     card.querySelector('.card-glow').style.background =
-      `radial-gradient(circle at ${x}% ${y}%, rgba(201,168,76,0.11) 0%, transparent 60%)`;
+      `radial-gradient(circle at ${x}% ${y}%, rgba(52,211,153,0.12) 0%, transparent 60%)`;
   });
 });
