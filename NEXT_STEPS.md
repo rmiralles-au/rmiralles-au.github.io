@@ -10,8 +10,8 @@ Rey asked for better card copy (professional, human), the Contact section and th
 paragraph removed, and a more corporate but still innovative look. Previewed in headless Chrome at
 1400 and 500px, then Rey said "push". What changed: all 17 card descriptions rewritten
 (numbers unchanged); Contact section and nav link gone; About keeps two paragraphs plus three
-working principles; card numbers replaced by an "In production" status; stack shown as chips;
-filter pills by department (Finance 5, Operations 5, Sales 3, Supply chain 2, People 2); reading
+working principles; card numbers removed; stack shown as chips;
+reading
 progress hairline at the top; pulsing dot in the hero eyebrow. The RJMC wordmark stays in the nav
 and footer (Rey did not ask to remove it). Meta description no longer says "Founder of RJMC".
 

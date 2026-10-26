@@ -244,31 +244,6 @@ section h2 {
 /* cards */
 #work { border-top: 1px solid var(--line); max-width: 1500px; }
 
-/* filters: one row of pills, the active one lifted and emerald */
-.filters {
-  display: flex; flex-wrap: wrap; gap: 0.5rem;
-  margin: -1.4rem 0 2rem;
-  transition-delay: 0.1s;
-}
-.filters button {
-  appearance: none; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 0.55rem 1rem;
-  background: var(--surface); color: var(--muted);
-  border: 1px solid var(--line-3); border-radius: 999px;
-  font-family: var(--font-b); font-size: 0.84rem; font-weight: 600; letter-spacing: 0.01em;
-  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
-}
-.filters button:hover { color: #fff; border-color: rgba(52,211,153,0.5); transform: translateY(-1px); }
-.filters button.on { color: #000; background: var(--accent); border-color: var(--accent); }
-.filters .count {
-  font-family: var(--font-h); font-size: 0.7rem; font-weight: 700;
-  padding: 0.1rem 0.45rem; border-radius: 999px;
-  background: rgba(255,255,255,0.08); color: inherit;
-}
-.filters button.on .count { background: rgba(0,0,0,0.14); }
-.empty { color: var(--muted); padding: 2rem 0; }
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -296,7 +271,6 @@ section h2 {
   box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(52,211,153,0.08) inset;
 }
 .card:hover::before { opacity: 1; }
-.card.hide { display: none; }
 .card-glow {
   position: absolute; inset: 0;
   background: radial-gradient(circle at 50% 0%, rgba(52,211,153,0.10) 0%, transparent 65%);
@@ -308,15 +282,6 @@ section h2 {
 .tag {
   font-size: 0.68rem; font-weight: 600; color: var(--accent);
   text-transform: uppercase; letter-spacing: 0.14em;
-}
-.live {
-  display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
-  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--dim);
-}
-.live i {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-  box-shadow: 0 0 10px rgba(52,211,153,0.9);
 }
 .card h3 {
   font-family: var(--font-h);
@@ -399,7 +364,6 @@ footer {
   .cards { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; gap: 0.9rem; }
   .metric + .metric { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 0.9rem; }
-  .filters { margin-top: -0.6rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   #cursor-glow { display: none; }
 }
