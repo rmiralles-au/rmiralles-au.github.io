@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reynel Miralles | Software and AI builder, Miami</title>
-  <meta name="description" content="Reynel Miralles builds the software and AI systems that do the manual work: 17 tools in production across 8 countries. Founder of RJMC, a software and AI studio in Miami." />
+  <meta name="description" content="Reynel Miralles builds the software and AI systems that do the manual work inside a company: 17 tools in production across 8 countries, in finance, operations, sales, logistics and HR." />
   <meta property="og:title"       content="Reynel Miralles | Software and AI builder" />
   <meta property="og:description" content="17 tools in production across 8 countries. Software and AI that do the manual work." />
   <meta property="og:image"       content="https://rmiralles-au.github.io/thumbnail.svg" />
@@ -26,6 +26,7 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div id="cursor-glow"></div>
+  <div id="progress" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav>
@@ -36,16 +37,15 @@
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <p class="eyebrow load-1">Software and AI builder &nbsp;·&nbsp; Miami, FL</p>
+      <p class="eyebrow load-1"><span class="pulse" aria-hidden="true"></span>Software and AI builder &nbsp;·&nbsp; Miami, FL</p>
       <h1 class="load-2">I build the <span class="accent">systems</span> that do the manual work.</h1>
-      <p class="hero-sub load-3">Seventeen tools shipped inside a Miami-based multinational operating across eight countries: finance, operations, sales, logistics, HR. Every one runs in production and gives a team its hours back, month after month.</p>
+      <p class="hero-sub load-3">Seventeen tools shipped inside a Miami-based multinational operating across eight countries, in finance, operations, sales, logistics and HR. Every one runs in production and gives a team its hours back, month after month.</p>
       <div class="hero-stats load-4">
         <div class="stat">
           <span class="stat-num" data-target="17" data-suffix="">17</span>
@@ -76,215 +76,224 @@
     <div class="section-head reveal">
       <p class="eyebrow">Selected work</p>
       <h2>Built. Shipped.<br>Running in production.</h2>
-      <p class="section-sub">Each card is one system, the hours it replaced, and what it runs on.</p>
+      <p class="section-sub">Each card is one system, the hours it replaced and what it runs on. Filter by the part of the business it serves.</p>
+    </div>
+    <div class="filters reveal" role="tablist" aria-label="Filter work by department">
+      <button class="on" data-filter="all" role="tab" aria-selected="true">All <span class="count">17</span></button>
+      <button data-filter="finance" role="tab" aria-selected="false">Finance <span class="count">5</span></button>
+      <button data-filter="operations" role="tab" aria-selected="false">Operations <span class="count">5</span></button>
+      <button data-filter="sales" role="tab" aria-selected="false">Sales <span class="count">3</span></button>
+      <button data-filter="supply" role="tab" aria-selected="false">Supply chain <span class="count">2</span></button>
+      <button data-filter="people" role="tab" aria-selected="false">People <span class="count">2</span></button>
     </div>
     <div class="cards">
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="finance">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">FP&amp;A reporting</span><span class="card-idx">01</span></div>
-        <h3>Clara: AI reporting agent</h3>
-        <p>Give it a country and a period and it returns the executive P&amp;L deck: Power BI data pulled, variances computed, commentary written, slides formatted. Thirty-two hours of close work, down to about two.</p>
+        <div class="card-top"><span class="tag">FP&amp;A reporting</span><span class="live"><i></i>In production</span></div>
+        <h3>Clara, AI reporting agent</h3>
+        <p>Give it a country and a period and it builds the executive P&amp;L deck. It pulls the Power BI data, computes every variance against budget and prior year, writes the commentary and formats the slides. A close that took thirty-two hours of analyst time now takes about two.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">32 hours</span><span class="mlabel">down to about 2 per close</span></div>
           <div class="metric"><span class="mval">8 countries</span><span class="mlabel">every monthly close</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; python-pptx</p>
-      </div>
+        <p class="stack"><span>Claude AI</span><span>Python</span><span>pandas</span><span>python-pptx</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="operations">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Builder operations</span><span class="card-idx">02</span></div>
-        <h3>BOLT: delivery and installation tracker</h3>
-        <p>Tracks every appliance in every unit of a multi-family project, from delivery to installed and approved: serial numbers, photos, installer, status and issues, kept as evidence for disputes with general contractors. It also forecasts the project pipeline and installer capacity. Installers use it from an iPad on site.</p>
+        <div class="card-top"><span class="tag">Builder operations</span><span class="live"><i></i>In production</span></div>
+        <h3>BOLT, delivery and installation tracker</h3>
+        <p>Keeps a record of every appliance in every unit of a multi-family project, from delivery through installation and approval. Installers log serials, photos and status from an iPad on site. The office sees it as it happens, and when a general contractor disputes an install, the evidence is already there. It also forecasts the project pipeline and installer capacity.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Field to office</span><span class="mlabel">installers submit from an iPad, the office sees it live</span></div>
           <div class="metric"><span class="mval">Dispute-proof</span><span class="mlabel">photos, serials and sign-offs kept as evidence</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Django &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Linux &nbsp;·&nbsp; Azure-backed storage &nbsp;·&nbsp; Microsoft Entra ID (SSO, MFA)</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>Linux</span><span>Azure-backed storage</span><span>Microsoft Entra ID (SSO, MFA)</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="people">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">People and onboarding</span><span class="card-idx">03</span></div>
+        <div class="card-top"><span class="tag">People and onboarding</span><span class="live"><i></i>In production</span></div>
         <h3>Avatar teacher for new hires</h3>
-        <p>An AI avatar that onboards new people for the HR team: it teaches the brands the company carries, how the company works and what a new hire needs to know in the first weeks, and answers their questions in conversation instead of a slide deck.</p>
+        <p>An AI avatar that welcomes new hires for the HR team. It walks them through the brands the company carries, how the business is organized and what matters in the first few weeks, then answers their questions in conversation. Nobody has to schedule a session or sit through a slide deck.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Brand by brand</span><span class="mlabel">taught in conversation, on demand</span></div>
           <div class="metric"><span class="mval">Self-serve</span><span class="mlabel">no live session needed from HR</span></div>
         </div>
-        <p class="stack">Higgsfield &nbsp;·&nbsp; Claude AI</p>
-      </div>
+        <p class="stack"><span>Higgsfield</span><span>Claude AI</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="operations">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Commercial operations</span><span class="card-idx">04</span></div>
-        <h3>Torre de Control: sales and inventory agent</h3>
-        <p>Takes the two files the Colombia team already exports and returns five formatted reports in under two minutes: sales against budget, product advance, inventory coverage, coverage against budget and forecast accuracy. Its first run flagged 169 SKUs at stockout risk and found a counting error in the company's own spreadsheet.</p>
+        <div class="card-top"><span class="tag">Commercial operations</span><span class="live"><i></i>In production</span></div>
+        <h3>Torre de Control, sales and inventory agent</h3>
+        <p>Takes the two files the Colombia team already exports and returns five formatted reports in under two minutes. Sales against budget, product advance, inventory coverage, coverage against budget and forecast accuracy. On its first run it flagged 169 SKUs at risk of stockout and caught a counting error in the team's own spreadsheet.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">$10.8M</span><span class="mlabel">annual sales budget monitored</span></div>
           <div class="metric"><span class="mval">Hours</span><span class="mlabel">down to under 2 minutes</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; openpyxl &nbsp;·&nbsp; Streamlit</p>
-      </div>
+        <p class="stack"><span>Claude AI</span><span>Python</span><span>pandas</span><span>openpyxl</span><span>Streamlit</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="finance">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Sales commissions</span><span class="card-idx">05</span></div>
+        <div class="card-top"><span class="tag">Sales commissions</span><span class="live"><i></i>In production</span></div>
         <h3>Commissions automation</h3>
-        <p>Reads the monthly SAP export, applies every tiered commission rule and delivers each salesperson's formatted report in one click. Five hundred line items that took the controller most of a day now take two minutes.</p>
+        <p>Reads the monthly SAP export, applies every tiered commission rule and produces each salesperson's report in one click. Five hundred line items that used to take the controller most of a day are done in two minutes, and the numbers match.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">4 to 8 hours</span><span class="mlabel">down to under 2 minutes</span></div>
           <div class="metric"><span class="mval">$5M+</span><span class="mlabel">in monthly sales covered</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; pandas &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Streamlit</span><span>pandas</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="finance">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Accounts payable</span><span class="card-idx">06</span></div>
+        <div class="card-top"><span class="tag">Accounts payable</span><span class="live"><i></i>In production</span></div>
         <h3>AP statement automation</h3>
-        <p>Reads vendor statements, extracts every transaction and writes a clean SAP-ready import file. A full day of keying, every month, replaced by minutes.</p>
+        <p>Reads vendor statements, pulls out every transaction and writes a clean import file ready for SAP. A full day of keying every month, now a few minutes of review.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">1 full day</span><span class="mlabel">down to minutes</span></div>
           <div class="metric"><span class="mval">$200K</span><span class="mlabel">processed every month</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Claude API &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Claude API</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="operations">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Executive reporting</span><span class="card-idx">07</span></div>
+        <div class="card-top"><span class="tag">Executive reporting</span><span class="live"><i></i>In production</span></div>
         <h3>Executive operations dashboard</h3>
-        <p>Consolidates sales, orders, inventory and financials from ten subsidiaries into one weekly executive deck for the owner and the CEO. The operations team runs it on its own, every week, with no technical help.</p>
+        <p>Brings sales, orders, inventory and financials from ten subsidiaries into one weekly deck for the owner and the CEO. The operations team runs it themselves every week, with no technical help.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">10 subsidiaries</span><span class="mlabel">in one weekly report</span></div>
           <div class="metric"><span class="mval">4 KPI areas</span><span class="mlabel">across 8 countries</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python</p>
-      </div>
+        <p class="stack"><span>Claude AI</span><span>Python</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="sales">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Executive reporting</span><span class="card-idx">08</span></div>
+        <div class="card-top"><span class="tag">Executive reporting</span><span class="live"><i></i>In production</span></div>
         <h3>Salesforce adoption KPIs</h3>
-        <p>Takes the raw Salesforce exports as downloaded, computes five KPIs and a composite adoption score per country across about 14,000 records, and produces the executive deck in under two minutes.</p>
+        <p>Takes the raw Salesforce exports as downloaded, computes five adoption KPIs and a composite score for each country across about 14,000 records, and delivers the executive deck in under two minutes.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">1 workday</span><span class="mlabel">down to under 2 minutes</span></div>
           <div class="metric"><span class="mval">8 countries</span><span class="mlabel">5 KPIs, about 14K records per cycle</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; pandas &nbsp;·&nbsp; python-pptx &nbsp;·&nbsp; Claude AI</p>
-      </div>
+        <p class="stack"><span>Python</span><span>pandas</span><span>python-pptx</span><span>Claude AI</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="sales">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Sales and quoting</span><span class="card-idx">09</span></div>
+        <div class="card-top"><span class="tag">Sales and quoting</span><span class="live"><i></i>In production</span></div>
         <h3>Outdoor kitchens quote agent</h3>
-        <p>A conversation collects the project. The agent picks the SKUs, prices them against the official price book with each country's tax, renders a front-elevation layout of the kitchen and returns a complete quote.</p>
+        <p>A short conversation collects the project details. The agent selects the SKUs, prices them from the official price book with each country's tax applied, draws a front-elevation layout of the kitchen and returns a complete quote.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Full catalog</span><span class="mlabel">priced per country, tax included</span></div>
           <div class="metric"><span class="mval">Quote and render</span><span class="mlabel">from one conversation</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Claude AI</span><span>Python</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="finance">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Credit and treasury</span><span class="card-idx">10</span></div>
+        <div class="card-top"><span class="tag">Credit and treasury</span><span class="live"><i></i>In production</span></div>
         <h3>Credit limit forecast</h3>
-        <p>Two files and one prompt produce the monthly credit utilization forecast for every European supplier: statements parsed, payments scheduled by due date, currencies converted, the table built and formatted.</p>
+        <p>Two files and one prompt produce the monthly credit utilization forecast for every European supplier. Statements parsed, payments scheduled by due date, currencies converted, and the table built and formatted for the treasury team.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">1 to 2 hours</span><span class="mlabel">down to under 3 minutes</span></div>
           <div class="metric"><span class="mval">6+ suppliers</span><span class="mlabel">with no extra setup</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Claude AI &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Claude AI</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="supply">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Supply chain</span><span class="card-idx">11</span></div>
-        <h3>RUTA: lead-time assistant</h3>
-        <p>Answers any lead-time question in plain language across 40 suppliers, 9 markets and 5 route types, with a stage-by-stage breakdown, incoterms and minimum order quantities. Its knowledge base is generated straight from the source workbook, so it stays right when the data changes.</p>
+        <div class="card-top"><span class="tag">Supply chain</span><span class="live"><i></i>In production</span></div>
+        <h3>RUTA, lead-time assistant</h3>
+        <p>Answers any lead-time question in plain language across 40 suppliers, 9 markets and 5 route types, stage by stage, with incoterms and minimum order quantities included. Its knowledge base is built directly from the source workbook, so it stays correct when the data changes.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">40 suppliers</span><span class="mlabel">across 9 destination markets</span></div>
           <div class="metric"><span class="mval">5 route types</span><span class="mlabel">up to 11 stages per answer</span></div>
         </div>
-        <p class="stack">Claude AI &nbsp;·&nbsp; Python &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Claude AI</span><span>Python</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="supply">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Logistics and finance</span><span class="card-idx">12</span></div>
+        <div class="card-top"><span class="tag">Logistics and finance</span><span class="live"><i></i>In production</span></div>
         <h3>Freight invoice classifier</h3>
-        <p>Reads carrier invoices as PDFs, extracts every shipment line and classifies it by direction, recipient type and charge class into an accounting-ready spreadsheet. No manual review.</p>
+        <p>Reads carrier invoices as PDFs, extracts every shipment line and classifies each one by direction, recipient type and charge class into a spreadsheet accounting can post from. No manual review.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">PDF to Excel</span><span class="mlabel">per carrier invoice, automatically</span></div>
           <div class="metric"><span class="mval">5 categories</span><span class="mlabel">classified per shipment line</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Claude AI &nbsp;·&nbsp; pdfplumber &nbsp;·&nbsp; pandas</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Claude AI</span><span>pdfplumber</span><span>pandas</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="finance">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">E-commerce and finance</span><span class="card-idx">13</span></div>
+        <div class="card-top"><span class="tag">E-commerce and finance</span><span class="live"><i></i>In production</span></div>
         <h3>Amazon settlement to SAP</h3>
-        <p>Groups the dozens of component rows behind each Amazon order into one clean line, maps identifiers to SAP codes and writes a DTW-ready import for invoices and credits in seconds. A reconciliation check compares the output to the source total before anything is uploaded.</p>
+        <p>Collapses the dozens of component rows behind each Amazon order into one clean line, maps the identifiers to SAP codes and writes a DTW-ready import for invoices and credits. A reconciliation check compares the output to the source total before anything is uploaded.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Seconds</span><span class="mlabel">instead of hundreds of rows by hand</span></div>
           <div class="metric"><span class="mval">Reconciled</span><span class="mlabel">before the SAP upload</span></div>
         </div>
-        <p class="stack">HTML &nbsp;·&nbsp; JavaScript &nbsp;·&nbsp; ExcelJS</p>
-      </div>
+        <p class="stack"><span>HTML</span><span>JavaScript</span><span>ExcelJS</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="operations">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Sales operations</span><span class="card-idx">14</span></div>
+        <div class="card-top"><span class="tag">Sales operations</span><span class="live"><i></i>In production</span></div>
         <h3>Inventory to sales matching</h3>
-        <p>Joins a 395-line inventory report to a sales export that shares no key and stores item numbers three different ways, resolves every one-to-many match a lookup would get wrong, and keeps the original formatting intact.</p>
+        <p>Joins a 395-line inventory report to a sales export that shares no common key and stores item numbers three different ways. It resolves every one-to-many match a lookup would get wrong and leaves the original formatting untouched.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">99% matched</span><span class="mlabel">395 items, 2,912 records</span></div>
           <div class="metric"><span class="mval">2 hours</span><span class="mlabel">saved per report cycle</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; openpyxl</p>
-      </div>
+        <p class="stack"><span>Python</span><span>openpyxl</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="sales">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Customer marketing</span><span class="card-idx">15</span></div>
+        <div class="card-top"><span class="tag">Customer marketing</span><span class="live"><i></i>In production</span></div>
         <h3>Post-purchase email automation</h3>
-        <p>Reads fulfilled orders, writes a brand-appropriate email personalized to each purchase and sends it through a pipeline with delivery logging and unsubscribe handling. Every order, no copywriting.</p>
+        <p>Reads fulfilled orders, writes an email in the brand's voice tailored to each purchase and sends it through a pipeline with delivery logging and unsubscribe handling. Every order gets one, and nobody writes copy.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Personalized</span><span class="mlabel">to each customer's exact purchase</span></div>
           <div class="metric"><span class="mval">Automated</span><span class="mlabel">send log and unsubscribes handled</span></div>
         </div>
-        <p class="stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; Claude AI</p>
-      </div>
+        <p class="stack"><span>Python</span><span>Streamlit</span><span>Claude AI</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="operations">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Sales operations</span><span class="card-idx">16</span></div>
-        <h3>OSM: open sales order dashboard</h3>
-        <p>A browser dashboard over the open order exports for Costa Rica: every outstanding order with status, aging and volume summaries, filterable, with nothing to install and no need to open SAP.</p>
+        <div class="card-top"><span class="tag">Sales operations</span><span class="live"><i></i>In production</span></div>
+        <h3>OSM, open sales order dashboard</h3>
+        <p>A browser dashboard over the open order exports for Costa Rica. Every outstanding order with status, aging and volume summaries, filterable, with nothing to install and no need to open SAP.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">Instant view</span><span class="mlabel">of the open order pipeline</span></div>
           <div class="metric"><span class="mval">No setup</span><span class="mlabel">runs in the browser</span></div>
         </div>
-        <p class="stack">HTML &nbsp;·&nbsp; JavaScript</p>
-      </div>
+        <p class="stack"><span>HTML</span><span>JavaScript</span></p>
+      </article>
 
-      <div class="card reveal-card">
+      <article class="card reveal-card" data-group="people">
         <div class="card-glow"></div>
-        <div class="card-top"><span class="tag">Internal communications</span><span class="card-idx">17</span></div>
-        <h3>NosImporta: AI video series</h3>
-        <p>About twenty short AI-generated videos, one per company value, produced for the internal culture campaign and shared across every subsidiary without a crew or a shoot.</p>
+        <div class="card-top"><span class="tag">Internal communications</span><span class="live"><i></i>In production</span></div>
+        <h3>NosImporta, AI video series</h3>
+        <p>Around twenty short AI-generated videos, one for each company value, produced for the internal culture campaign and shared across every subsidiary without a crew or a shoot.</p>
         <div class="metrics">
           <div class="metric"><span class="mval">20 videos</span><span class="mlabel">one per value</span></div>
           <div class="metric"><span class="mval">No crew</span><span class="mlabel">AI-generated, company-wide</span></div>
         </div>
-        <p class="stack">Higgsfield</p>
-      </div>
+        <p class="stack"><span>Higgsfield</span></p>
+      </article>
 
     </div>
+    <p class="empty" hidden>Nothing in this group yet.</p>
   </section>
 
   <!-- ABOUT -->
@@ -305,20 +314,14 @@
         </div>
       </div>
       <div class="about-right">
-        <p>I am Reynel Miralles, a student at the University of Florida and an AI builder inside a Miami-based multinational with subsidiaries across Latin America and the Caribbean. I work directly with the CEO and the CFO, and I have shipped seventeen tools that run in production across eight countries, in finance, operations, sales, logistics and HR.</p>
-        <p>I build from inside the teams that do the work, so I know exactly which hours are wasted and what a system has to get right before people trust it. Every tool here was built on real files, handed over documented, and is still running.</p>
-        <p>I founded RJMC, a software and AI studio in Miami, to do the same for companies across Latin America and the United States. Based in Miami. Fluent in Spanish and English.</p>
+        <p>I am Reynel Miralles, a finance student at the University of Florida and an AI builder inside a Miami-based multinational with subsidiaries across Latin America and the Caribbean. I work directly with the CEO and the CFO, and I have shipped seventeen tools that run in production across eight countries, in finance, operations, sales, logistics and HR.</p>
+        <p>I build from inside the teams that do the work, so I know which hours are wasted and what a system has to get right before people trust it. Every tool here was built on real files, handed over with documentation, and is still running.</p>
+        <ul class="principles">
+          <li><b>Built on real files.</b> The first version runs on the team's own exports, so nothing about their work changes except the last step.</li>
+          <li><b>Handed over documented.</b> Every tool ships with its documentation, and the team runs it without me.</li>
+          <li><b>Checked before trusted.</b> Code computes the numbers, the model only writes about numbers it is handed, and a reconciliation check runs before anything is uploaded.</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-wrap reveal">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's talk.</h2>
-      <p>If your team spends hours on work that should take minutes, in any department, I want to hear about it.</p>
-      <a href="mailto:reymiralles05@gmail.com" class="btn">Get in touch</a>
     </div>
   </section>
 

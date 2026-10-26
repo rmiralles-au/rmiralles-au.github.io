@@ -214,6 +214,34 @@ window.addEventListener('scroll', () => {
   links.forEach(a => { a.classList.toggle('on', a.getAttribute('href') === '#' + cur); });
 }, { passive: true });
 
+// Reading progress bar
+const bar = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+}, { passive: true });
+
+// Work filters: each card carries data-group; a pill shows only its group
+const cards = [...document.querySelectorAll('.card')];
+const empty = document.querySelector('.empty');
+document.querySelectorAll('.filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.filters button').forEach(b => {
+      const on = b === btn;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    let shown = 0;
+    cards.forEach(c => {
+      const show = f === 'all' || c.dataset.group === f;
+      c.classList.toggle('hide', !show);
+      if (show) { shown++; c.classList.add('visible'); }
+    });
+    empty.hidden = shown > 0;
+  });
+});
+
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
